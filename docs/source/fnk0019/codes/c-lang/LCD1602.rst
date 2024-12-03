@@ -1,0 +1,112 @@
+##############################################################################
+Chapter LCD1602
+##############################################################################
+
+.. include:: ../common/com.LCD1602.rst
+
+Code
+================================================================
+
+This code will have your RPi's CPU temperature and System Time Displayed on the LCD1602.
+
+C Code 20.1.1 I2CLCD1602
+----------------------------------------------------------------
+
+If you did not configure I2C and install Smbus, please refer to :doc:`Chapter 7 ADC <ADC>`. If you did, please continue.
+
+First, observe the project result, and then learn about the code in detail.
+
+.. hint:: 
+    :red:`If you have any concerns, please contact us via:` support@freenove.com
+
+1.	Use ``cd`` command to enter 20.1.1_ I2CLCD1602 directory of C code.
+
+.. code-block:: console
+
+    $ cd ~/Freenove_Kit/Code/C_Code/20.1.1_I2CLCD1602
+
+2.	Use following command to compile “I2CLCD1602.c” and generate executable file ``I2CLCD1602``.
+
+.. code-block:: console
+
+    $ gcc I2CLCD1602.c -o I2CLCD1602 -lwiringPi -lwiringPiDev
+
+3.	Then run the generated file “I2CLCD1602”.
+
+.. code-block:: console
+
+    $ sudo ./I2CLCD1602
+
+After the program is executed, the LCD1602 Screen will display your RPi's CPU Temperature and System Time. 
+So far, at this writing, we have two types of LCD1602 on sale. One needs to adjust the backlight, and the other does not.
+
+The LCD1602 that does not need to adjust the backlight is shown in the figure below.
+
+.. image:: ../_static/imgs/LCD1602_back.png
+    :align: center
+    :width: 50%
+
+If the LCD1602 you received is the following one, and you cannot see anything on the display or the display is not clear, try rotating the white knob on back of LCD1602 slowly, which adjusts the contrast, until the screen can display clearly.
+
+.. image:: ../_static/imgs/LCD1602_clear.png
+    :align: center
+    :width: 50%
+
+The following is the program code:
+
+.. literalinclude:: ../../../freenove_Kit/Code/C_Code/20.1.1_I2CLCD1602/I2CLCD1602.c
+    :linenos: 
+    :language: C
+
+From the code, we can see that the PCF8591 and the PCF8574 have many similarities in using the I2C interface to expand the GPIO RPI. 
+First, define the I2C address of the PCF8574 and the Extension of the GPIO pin, which is connected to the GPIO pin of the LCD1602. LCD1602 has two different i2c addresses. Set 0x27 as default.
+
+.. literalinclude:: ../../../freenove_Kit/Code/C_Code/20.1.1_I2CLCD1602/I2CLCD1602.c
+    :linenos: 
+    :language: C
+    :lines: 15-25
+
+Then, in main function, initialize the PCF8574, set all the pins to output mode, and turn ON the LCD1602 backlight (without the backlight the Display is difficult to read). 
+
+.. literalinclude:: ../../../freenove_Kit/Code/C_Code/20.1.1_I2CLCD1602/I2CLCD1602.c
+    :linenos: 
+    :language: C
+    :lines: 83-87
+
+Then use lcdInit() to initialize LCD1602 and set the RW pin of LCD1602 to 0 (can be written) according to requirements of this function. The return value of the function called "Handle" is used to handle LCD1602".
+
+.. code-block:: c
+
+    lcdhd = lcdInit(2,16,4,RS,EN,D4,D5,D6,D7,0,0,0,0);// initialize LCD and return “handle” used to handle LCD
+
+Details about lcdInit():
+
+.. c:function:: int lcdInit (int rows, int cols, int bits, int rs, int strb, int d0, int d1, int d2, int d3, int d4, int d5, int d6, int d7) ;
+
+    This is the main initialization function and must be executd first before you use any other LCD functions. Rows and cols are the rows and columns of the Display (e.g. 2, 16 or 4, 20). Bits is the number of how wide the number of bits is on the interface (4 or 8). The rs and strb represent the pin numbers of the Display’s RS pin and Strobe (E) pin. The parameters d0 through d7 are the pin numbers of the 8 data pins connected from the RPi to the display. Only the first 4 are used if you are running the display in 4-bit mode.
+    The return value is the 'handle' to be used for all subsequent calls to the lcd library when dealing with that LCD, or -1 to indicate a fault (usually incorrect parameter)
+    For more details about LCD Library, please refer to: https://projects.drogon.net/raspberry-pi/wiringpi/lcd-library/ 
+
+In the next “while”, two subfunctions are called to display the RPi's CPU Temperature and the SystemTime. First look at subfunction printCPUTemperature(). The CPU temperature data is stored in the :red:`"/sys/class/thermal/thermal_zone0/temp"` file. We need to read the contents of this file, which converts it to temperature value stored in variable CPU_temp and uses lcdPrintf() to display it on LCD.
+
+.. literalinclude:: ../../../freenove_Kit/Code/C_Code/20.1.1_I2CLCD1602/I2CLCD1602.c
+    :linenos: 
+    :language: C
+    :lines: 28-40
+
+Details about lcdPosition() and lcdPrintf():
+
+.. c:function:: lcdPosition (int handle, int x, int y);
+
+    Set the position of the cursor for subsequent text entry.
+
+.. c:function:: lcdPutchar (int handle, uint8_t data) & lcdPuts (int handle, char *string) & lcdPrintf (int handle, char *message, …)
+
+    These output a single ASCII character, a string or a formatted string using the usual print formatting commands to display individual characters (it is how you are able to see characters on your computer monitor).
+
+Next is subfunction printDataTime() used to display System Time. First, it gets the Standard Time and stores it into variable Rawtime, and then converts it to the Local Time and stores it into timeinfo, and finally displays the Time information on the LCD1602 Display.
+
+.. literalinclude:: ../../../freenove_Kit/Code/C_Code/20.1.1_I2CLCD1602/I2CLCD1602.c
+    :linenos: 
+    :language: C
+    :lines: 41-49
