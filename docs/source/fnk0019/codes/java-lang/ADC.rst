@@ -504,7 +504,7 @@ Circuit
 |                                                                                                |
 |   |ADS7830-fritizing-3|                                                                        |
 |                                                                                                |
-|   **If circuit above doesn't work, please try following wiring.**                              |
+|   **If circuit above doesn't work, please try following wiring.**                                                                                            |
 |                                                                                                |
 |   |ADS7830-fritizing-4|                                                                        |
 +------------------------------------------------------------------------------------------------+

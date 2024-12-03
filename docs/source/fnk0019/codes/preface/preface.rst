@@ -18,8 +18,5 @@ Additionally, if you encounter any issues or have questions about this tutorial 
 
 support@freenove.com
 
-
-
-
-.. |fnkxxxx| replace:: fnk0019
-.. |product_name| replace:: Freenove Super Starter Kit for Raspberry Pi
+.. |fnkxxxx| replace:: fnk0066
+.. |product_name| replace:: Freenove_Complete_Starter_Kit_for_Raspberry_Pi

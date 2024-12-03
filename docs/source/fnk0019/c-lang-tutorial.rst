@@ -8,14 +8,14 @@ C language tutorial
    :titlesonly:
    :caption: Preface
 
-   ../codes/preface/c_preface.rst
+   codes/preface/c_preface.rst
 
 
 .. toctree::
    :titlesonly: 
    :caption: Preparation
    
-   ../codes/preface/c_preparation.rst
+   codes/preface/c_preparation.rst
 
 .. toctree::
    :numbered:
@@ -37,5 +37,5 @@ C language tutorial
    codes/c-lang/74HC595 & 7-Segment Display.rst
    codes/c-lang/74HC595 & LED Matrix.rst
    codes/c-lang/LCD1602.rst
-   codes/common/Other Components.rst
-   codes/common/WhatsNext.rst
+   codes/c-lang/Other Components.rst
+   codes/c-lang/WhatsNext.rst

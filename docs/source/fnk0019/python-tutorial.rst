@@ -7,13 +7,13 @@ Python language tutorial
    :titlesonly:
    :caption: Preface
 
-   ../codes/preface/python_preface.rst
+   codes/preface/python_preface.rst
 
 .. toctree::
    :titlesonly: 
    :caption: Preparation
    
-   ../codes/preface/python_preparation.rst
+   codes/preface/python_preparation.rst
 
 
 .. toctree::
@@ -37,4 +37,4 @@ Python language tutorial
    codes/python-lang/74HC595 & LED Matrix.rst
    codes/python-lang/LCD1602.rst
    codes/python-lang/Web IoT.rst
-   codes/common/WhatsNext.rst
+   codes/python-lang/WhatsNext.rst

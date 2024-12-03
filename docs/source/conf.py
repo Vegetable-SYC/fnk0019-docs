@@ -50,8 +50,8 @@ version = "v1.0"
 # extensions = []
 extensions = [
     "sphinx_rtd_theme",
-    "sphinx.ext.extlinks",
-    "sphinx.ext.intersphinx",
+    # "sphinx.ext.extlinks",
+    # "sphinx.ext.intersphinx",
 ]
 
 templates_path = ["_templates"]

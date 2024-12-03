@@ -93,7 +93,7 @@ The circuit of this project is similar to the one in last chapter. The only diff
 +------------------------------------------------------------------------------------------------+
 |   Schematic diagram                                                                            |
 |                                                                                                |
-|   |PCF8591-Schematic-5|                                                                        |
+|   |ADS7830-Schematic-5|                                                                        |
 +------------------------------------------------------------------------------------------------+
 |   Hardware connection. If you need any support,please feel free to contact us via:             |
 |                                                                                                |
