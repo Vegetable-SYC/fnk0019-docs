@@ -37,7 +37,7 @@ Breadboard Power Module
 
 .. |jumper-wire| image:: ../_static/imgs/jumper-wire.png
 .. |Resistor-10kΩ| image:: ../_static/imgs/Resistor-10kΩ.png
-    :width: 10%
+    :width: 25%
 .. |power-module| image:: ../_static/imgs/power-module.png
     :width: 60%
 .. |ADC-module-1| image:: ../_static/imgs/ADC-module-1.png
