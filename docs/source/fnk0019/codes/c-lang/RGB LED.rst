@@ -120,27 +120,27 @@ After the program is executed, you will see that the RGB LED shows lights of dif
 
 The following is the program code:
 
-.. literalinclude:: ../../../../fnk0066-codes/c-lang/RGBLED/RGBLED.c
+.. literalinclude:: ../../../freenove_Kit/Code/C_Code/05.1.1_ColorfulLED/ColorfulLED.c
     :linenos: 
     :language: C
 
 First, in subfunction of ledInit(), create the software PWM control pins used to control the R, G, B pin respectively.
 
-.. literalinclude:: ../../../../fnk0066-codes/c-lang/RGBLED/RGBLED.c
+.. literalinclude:: ../../../freenove_Kit/Code/C_Code/05.1.1_ColorfulLED/ColorfulLED.c
     :linenos: 
     :language: C
     :lines: 10-15
 
 Then create subfunction, and set the PWM of three pins.
 
-.. literalinclude:: ../../../../fnk0066-codes/c-lang/RGBLED/RGBLED.c
+.. literalinclude:: ../../../freenove_Kit/Code/C_Code/05.1.1_ColorfulLED/ColorfulLED.c
     :linenos: 
     :language: C
     :lines: 17-22
 
 Finally, in the “while” loop of main function, get three random numbers and specify them as the PWM duty cycle, which will be assigned to the corresponding pins. So RGB LED can switch the color randomly all the time.
 
-.. literalinclude:: ../../../../fnk0066-codes/c-lang/RGBLED/RGBLED.c
+.. literalinclude:: ../../../freenove_Kit/Code/C_Code/05.1.1_ColorfulLED/ColorfulLED.c
     :linenos: 
     :language: C
     :lines: 33-42
