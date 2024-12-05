@@ -118,6 +118,7 @@ Port description of L293D module is as follows:
     For more details, please see the datasheet for this IC Chip.
 
 When using the L293D to drive a DC Motor, there are usually two connection options.
+
 The following connection option uses one channel of the L239D, which can control motor speed through the PWM, However the motor then can only rotate in one direction.
 
 .. image:: ../_static/imgs/L293D-1.png
@@ -187,6 +188,7 @@ C Code 13.1.1 Motor
 ----------------------------------------------------------------
 
 If you did not configure I2C, please refer to Chapter 7. If you did, please continue.
+
 First, observe the project result, and then learn about the code in detail.
 
 .. hint:: 

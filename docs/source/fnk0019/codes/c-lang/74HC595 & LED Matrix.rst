@@ -112,6 +112,7 @@ First, observe the project result, and then learn about the code in detail.
     $ sudo ./LEDMatrix
 
 After the program is executed, the LED Matrix display a smiling face, and then display characters "0 to F" scrolling in a loop on the LED Matrix.
+
 The following is the program code:
 
 .. literalinclude:: ../../../freenove_Kit/Code/C_Code/19.1.1_LEDMatrix/LEDMatrix.c

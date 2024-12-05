@@ -104,6 +104,7 @@ First, observe the project result, and then learn about the code in detail.
     $ sudo ./SevenSegmentDisplay
 
 After the program is executed, the 7-Segment Display starts to display the characters “0” to “F” in succession.
+
 The following is the program code:
 
 .. literalinclude:: ../../../freenove_Kit/Code/C_Code/18.1.1_SevenSegmentDisplay/SevenSegmentDisplay.c
@@ -186,6 +187,7 @@ The internal electronic circuit is shown below, and all 8 LED cathode pins of ea
     :align: center
 
 Display method of 4 Digit 7-segment display is similar to 1 Digit 7-segment display. The difference between them is that the 4-Digit displays each Digit is visible in turn, one by one and not together. We need to first send high level to the common end of the first Digit Display, and send low level to the remaining three common ends, and then send content to 8 LED cathode pins of the first Digit Display. At this time, the first 7-Segment Display will show visible content and the remaining three will be OFF.
+
 Similarly, the second, third and fourth 7-Segment Displays will show visible content in turn by scanning the display. Although the four number characters are displayed in turn separately, this process is so very fast that it is unperceivable to the naked eye. This is due to the principle of optical afterglow effect and the vision persistence effect in human sight. This is how we can see all 4 number characters at the same time. However, if each number character is displayed for a longer period, you will be able to see that the number characters are displayed separately. 
 
 Circuit
@@ -236,6 +238,7 @@ First, observe the project result, and then learn about the code in detail.\
     $ sudo ./StopWatch
 
 After the program is executed, the 4-Digit 7-Segment Display starts displaying a four-digit number dynamically, and the numeric value of this number will increase by plus 1 each second thereafter.
+
 The following is the program code:
 
 .. literalinclude:: ../../../freenove_Kit/Code/C_Code/18.2.1_StopWatch/StopWatch.c

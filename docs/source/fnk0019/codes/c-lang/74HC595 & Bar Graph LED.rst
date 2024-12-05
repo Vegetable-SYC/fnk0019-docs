@@ -127,6 +127,7 @@ First, observe the project result, and then learn about the code in detail.
     $ sudo ./LightWater02
 
 After the program is executed, you will see that Bar Graph LED starts with the flowing water pattern flashing from left to right and then back from right to left.
+
 The following is the program code:
 
 .. literalinclude:: ../../../freenove_Kit/Code/C_Code/17.1.1_LightWater02/LightWater02.c
