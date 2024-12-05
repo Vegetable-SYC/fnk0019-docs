@@ -37,7 +37,7 @@ Breadboard Power Module
 
 .. |jumper-wire| image:: ../_static/imgs/jumper-wire.png
 .. |Resistor-10kΩ| image:: ../_static/imgs/Resistor-10kΩ.png
-    :width: 10%
+    :width: 25%
 .. |power-module| image:: ../_static/imgs/power-module.png
     :width: 60%
 .. |ADC-module-1| image:: ../_static/imgs/ADC-module-1.png
@@ -51,7 +51,6 @@ Breadboard Power Module
     :width: 30%
 .. |DC_Motor_Module| image:: ../_static/imgs/DC_Motor_Module.png
     :width: 50%
-
 Component knowledge
 ================================================================
 
@@ -118,6 +117,7 @@ Port description of L293D module is as follows:
     For more details, please see the datasheet for this IC Chip.
 
 When using the L293D to drive a DC Motor, there are usually two connection options.
+
 The following connection option uses one channel of the L239D, which can control motor speed through the PWM, However the motor then can only rotate in one direction.
 
 .. image:: ../_static/imgs/L293D-1.png

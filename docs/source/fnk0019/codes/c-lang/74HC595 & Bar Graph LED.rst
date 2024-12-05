@@ -71,7 +71,9 @@ The ports of the 74HC595 chip are described as follows:
 | MR       | 10           |                                                                           |
 |          |              | the content in shift register will be cleared.                            | 
 +----------+--------------+---------------------------------------------------------------------------+                                                  
-|  Q7      | 9            | Serial Data Output: it can be connected to more 74HC595 chips in series.  |                                   
+|          | 9            | Serial Data Output: it can be connected to more 74HC595 chips             |                                   
+|  Q7      |              |                                                                           |
+|          |              | in series.                                                                |
 +----------+--------------+---------------------------------------------------------------------------+ 
 
 .. seealso::

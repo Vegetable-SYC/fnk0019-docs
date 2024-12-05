@@ -14,11 +14,6 @@ A Thermistor is a type of Resistor whose resistance value is dependent on temper
 Component List
 ================================================================
 
-.. table:: 
-    :width: 50%
-    :widths: 20 50
-    :align: center
-
 +---------------------------------------------------------------+
 |1. Raspberry Pi (with 40 GPIO) x1                              |     
 |                                                               |       

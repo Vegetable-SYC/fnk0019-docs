@@ -2,7 +2,6 @@
 Chapter 74HC595 & Bar Graph LED
 ################################################################
 
-
 We have used LED Bar Graph to make a flowing water light, in which 10 GPIO ports of RPi are occupied. More GPIO ports mean that more peripherals can be connected to RPi, so GPIO resource is very precious. Can we make flowing water light with less GPIO ports? In this chapter, we will learn a component, 74HC595, which can achieve the target.
 
 Project FollowLight

@@ -2,7 +2,6 @@
 Chapter 74HC595 & LED Matrix
 ################################################################
 
-
 Thus far we have learned how to use the 74HC595 IC Chip to control the Bar Graph LED and the 7-Segment Display. We will now use 74HC595 IC Chips to control an LED Matrix.
 
 Project LED Matrix

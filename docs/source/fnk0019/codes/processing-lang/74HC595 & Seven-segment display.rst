@@ -75,6 +75,7 @@ Sketch 11.1.1 SSD
 ----------------------------------------------------------------
 
 First observe the result after running the sketch, and then learn about the code in detail.
+
 1.	Use Processing to open the file Sketch_11_1_1_SSD.
 
 .. code-block:: console    
@@ -181,6 +182,7 @@ The internal electronic circuit is shown below, and all 8 LED cathode pins of ea
     :align: center
 
 Display method of 4 Digit 7-segment display is similar to 1 Digit 7-segment display. The difference between them is that the 4-Digit displays each Digit is visible in turn, one by one and not together. We need to first send high level to the common end of the first Digit Display, and send low level to the remaining three common ends, and then send content to 8 LED cathode pins of the first Digit Display. At this time, the first 7-Segment Display will show visible content and the remaining three will be OFF.
+
 Similarly, the second, third and fourth 7-Segment Displays will show visible content in turn by scanning the display. Although the four number characters are displayed in turn separately, this process is so very fast that it is unperceivable to the naked eye. This is due to the principle of optical afterglow effect and the vision persistence effect in human sight. This is how we can see all 4 number characters at the same time. However, if each number character is displayed for a longer period, you will be able to see that the number characters are displayed separately. 
 
 Circuit

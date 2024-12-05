@@ -2,7 +2,6 @@
 Chapter 74HC595 & LED Matrix
 ################################################################
 
-
 Thus far we have learned how to use the 74HC595 IC Chip to control the Bar Graph LED and the 7-Segment Display. We will now use 74HC595 IC Chips to control an LED Matrix.
 
 Project LED Matrix
@@ -47,6 +46,7 @@ An LED Matrix is a rectangular display module that consists of a uniform grid of
     :width: 50%
 
 In order to facilitate the operation and reduce the number of ports required to drive this component, the Positive Poles of the LEDs in each row and Negative Poles of the LEDs in each column are respectively connected together inside the LED Matrix module, which is called a Common Anode. There is another arrangement type. Negative Poles of the LEDs in each row and the Positive Poles of the LEDs in each column are respectively connected together, which is called a Common Cathode.
+
 The LED Matrix that we use in this project is a Common Anode LED Matrix.
 
 .. image:: ../_static/imgs/LED_Matrix_2.png
@@ -81,7 +81,6 @@ In circuit of this project, the power pin of the 74HC595 IC Chip is connected to
 .. |LED_MAtrix_Sc| image:: ../_static/imgs/LED_MAtrix_Sc.png
 .. |LED_MAtrix_Fr| image:: ../_static/imgs/LED_MAtrix_Fr.png
     
-
 Sketch
 ================================================================
 
@@ -89,6 +88,7 @@ Sketch 12.1.1 LEDMatrix
 ----------------------------------------------------------------
 
 First observe the result after running the sketch, and then learn about the code in detail.
+
 1.	Use Processing to open the file Sketch_12_1_1_LEDMatrix.
 
 .. code-block:: console    

@@ -15,12 +15,12 @@ Component List
 
 +-------------------------------------------------+-------------------------------------------------+
 |1. Raspberry Pi (with 40 GPIO) x1                |                                                 |     
-|                                                 | 4x4 Matrix Keypad x1                            |       
+|                                                 |                                                 |       
 |2. GPIO Extension Board & Ribbon Cable x1        |                                                 |       
-|                                                 |  |Keypad|                                       |                                                            
-|3. Breadboard x1                                 |                                                 |                                                                 
+|                                                 |                                                 |                                                            
+|3. Breadboard x1                                 |   4x4 Matrix Keypad x1                          |                                                                 
 +-------------------------------------------------+                                                 |
-| Jumper wire                                     |                                                 |
+| Jumper wire                                     |     |Keypad|                                    |
 |                                                 |                                                 |
 |  |jumper-wire|                                  |                                                 |
 +-------------------------------------------------+                                                 |
@@ -32,8 +32,9 @@ Component List
 .. |jumper-wire| image:: ../_static/imgs/jumper-wire.png
     :width: 50%
 .. |Resistor-10kΩ| image:: ../_static/imgs/Resistor-10kΩ.png
-    :width: 15%
+    :width: 5%
 .. |Keypad| image:: ../_static/imgs/Keypad.png
+    :width: 200%
 
 Component knowledge
 ================================================================

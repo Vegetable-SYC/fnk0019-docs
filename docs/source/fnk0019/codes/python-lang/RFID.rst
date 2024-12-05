@@ -188,9 +188,9 @@ And each block contains 16 bytes (Byte0-Byte15), 64*16=1024. As is shown in the 
     
 Each sector has a set of independent password and access control put in its last block, that is, Block 3, which is also known as sector trailer. Sector 0, block 0 (namely absolute address 0) of S50 is used to store the card serial number and vendor code, which has been solidified and can’t be changed. Except the manufacturer and the control block, the rest of the cards are data blocks, which can be used to store data. Data block can be used for two kinds of applications:
 
-(1) used as general data storage and can be operated for reading and writing data.
+1. used as general data storage and can be operated for reading and writing data.
 
-(2) used as data value, and can be operated for initializing, adding, subtracting and reading the value.
+2. used as data value, and can be operated for initializing, adding, subtracting and reading the value.
 The sector trailer block in each sector is the control block, including a 6-byte password A, a 4-byte access control and a 6-byte password B. For example, the control block of a brand new card is as follows:
 
 .. list-table::
@@ -209,6 +209,7 @@ The sector trailer block in each sector is the control block, including a 6-byte
 The default password of a brand new card is generally 0A1A2A3A4A5 for password A and B0B1B2B3B4B5 for password B, or both the password A and password B are 6 FF. Access control is used to set the access conditions for each block (including the control block itself) in a sector.
 
 For more details about how to set data blocks and control blocks, please refer to Datasheet.
+
 By default, after verifying password A or password B, we can do reading or writing operation to data blocks. And after verifying password A, we can do reading or writing operation to control blocks. But password A can never be read, so if you choose to verify password A but forget the password A, the block will never be able to read again.
 
 .. hint:: 

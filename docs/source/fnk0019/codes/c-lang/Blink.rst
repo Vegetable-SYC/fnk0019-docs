@@ -12,33 +12,6 @@ In this project, we will use RPi to control blinking a common LED.
 Component List
 ================================================================
 
-1.  | Raspberry Pi 
-    | (Recommended: Raspberry Pi 5 / 4B / 3B+ / 3B) 
-    | (Compatible: 3A+ / 2B / 1B+ / 1A+ / Zero W / Zero) 
-
-    .. image:: ../_static/imgs/raspberrypi5.png
-        :height: 100
-
-2.  GPIO Extension Board & Ribbon Cable
-
-    .. image:: ../_static/imgs/raspberrypi-extension-board.jpg
-        :height: 100
-
-3.  Breadboard x1
-
-    .. image:: ../_static/imgs/breadborad-830.jpg
-        :height: 100
-
-4.  LED x1
-
-    .. image:: ../_static/imgs/red-led.png
-        :height: 100
-
-5.  Resistor 220Ω x1
-
-    .. image:: ../_static/imgs/res-220R.png
-        :height: 100
-
 +-----------------------------------------------------------+
 |    Raspberry Pi                                           |     
 |                                                           |       
@@ -62,15 +35,13 @@ Component List
 .. |jumper-wire| image:: ../_static/imgs/jumper-wire.png
     :width: 60%
 .. |extension-board| image:: ../_static/imgs/raspberrypi-extension-board.jpg
-    :width: 18%
+    :width: 70%
 .. |breadborad-830| image:: ../_static/imgs/breadborad-830.jpg
-    :width: 10%
+    :width: 80%
 .. |red-led| image:: ../_static/imgs/red-led.png
-    :width: 30%
+    :width: 15%
 .. |res-220R| image:: ../_static/imgs/res-220R.png
-    :width: 30%
-.. |NPN-transistor| image:: ../_static/imgs/NPN-transistor.png
-    :width: 25%
+    :width: 10%
 
 In the components list, 3B GPIO, Extension Shield Raspberry and Breadboard are necessary for each project. Later, they will be reference by text only (no images as in above).
 
@@ -84,7 +55,7 @@ BCM GPIO Numbering
 ---------------------------------------------------------------
 The Raspberry Pi CPU uses Broadcom (BCM) processing chips BCM2835, BCM2836 or BCM2837. GPIO pin numbers are assigned by the processing chip manufacturer and are how the computer recognizes each pin. The pin numbers themselves do not make sense or have meaning as they are only a form of identification. Since their numeric values and physical locations have no specific order, there is no way to remember them so you will need to have a printed reference or a reference board that fits over the pins.
 
-Each pin’s functional assignment is defined in the image below:
+Each pin's functional assignment is defined in the image below:
     .. image:: ../_static/imgs/raspberrypi5-cc90.png
         :height: 500
 
