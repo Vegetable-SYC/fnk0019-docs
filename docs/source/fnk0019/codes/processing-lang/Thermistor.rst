@@ -51,9 +51,11 @@ Thermistor is a temperature sensitive resistor. When it senses a change in tempe
 
 .. image:: ../_static/imgs/Thermistor.png
         :width: 10%
+        :align: center
 
 .. image:: ../_static/imgs/Thermistor-2.png
         :width: 15%
+        :align: center
 
 The relationship between resistance value and temperature of a thermistor is:
 
@@ -73,6 +75,7 @@ The circuit connection method of the Thermistor is similar to photoresistor, as 
 
 .. image:: ../_static/imgs/Thermistor-3.png
         :width: 20%
+        :align: center
 
 We can use the value measured by the ADC converter to obtain the resistance value of Thermistor, and then we can use the formula to obtain the temperature value.
 Therefore, the temperature formula can be derived as:
