@@ -1,9 +1,10 @@
+
 ######################################################
 Freenove Super Starter Kit for Raspberry Pi
 ######################################################
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
    :caption: FNK0019
    :glob:
 
