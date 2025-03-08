@@ -217,7 +217,7 @@ This code uses the four step four pat mode to drive the Stepper Motor clockwise 
 
 .. code-block:: console
 
-    $ cd ~/Freenove_Kit/Code/Python_GPIOZero_Code/18.2.1_StopWatch
+    $ cd ~/Freenove_Kit/Code/Python_GPIOZero_Code/13.2.1_StopWatch
 
 2.	Use python command to execute code "StopWatch.py".
 
@@ -229,14 +229,14 @@ After the program is executed, 4-Digit 7-segment start displaying a four-digit n
 
 The following is the program code:
 
-.. literalinclude:: ../../../freenove_Kit/Code/Python_GPIOZero_Code/18.2.1_StopWatch/StopWatch.py
+.. literalinclude:: ../../../freenove_Kit/Code/Python_GPIOZero_Code/13.2.1_StopWatch/StopWatch.py
     :linenos: 
     :language: python
     :dedent:
 
 First, define the pin of 74HC595 and 7-segment display common end, character encoding and a variable "counter" to be displayed counter.
 
-.. literalinclude:: ../../../freenove_Kit/Code/Python_GPIOZero_Code/18.2.1_StopWatch/StopWatch.py
+.. literalinclude:: ../../../freenove_Kit/Code/Python_GPIOZero_Code/13.2.1_StopWatch/StopWatch.py
     :linenos: 
     :language: python
     :lines: 15-21
@@ -244,7 +244,7 @@ First, define the pin of 74HC595 and 7-segment display common end, character enc
 
 Subfunction **selectDigit** (digit) function is used to open one of the 7-segment display and close the other 7-segment display, where the parameter digit value can be 1,2,4,8. Using "|" can open a number of 7-segment display.
 
-.. literalinclude:: ../../../freenove_Kit/Code/Python_GPIOZero_Code/18.2.1_StopWatch/StopWatch.py
+.. literalinclude:: ../../../freenove_Kit/Code/Python_GPIOZero_Code/13.2.1_StopWatch/StopWatch.py
     :linenos: 
     :language: python
     :lines: 38-42
@@ -261,7 +261,7 @@ Subfunction **outData** (data) is used to make the 74HC595 output an 8-bit data 
 
 Subfunction **display** (int dec) is used to make a 4-Digit 7-Segment Display a 4-bit integer. First open the common end of first 7-Segment Display Digit and turn OFF the other three Digits, now it can be used as 1-Digit 7-Segment Display. The first Digit is used for displaying single digits of "dec", the second Digit is for tens, the third for hundreds and fourth for thousands respectively. Each digit will be displayed for a period by using delay (). The time in this code is very brief, so you will a mess of Digits. If the time is set long enough, you will see that every digit is displayed independently.
 
-.. literalinclude:: ../../../freenove_Kit/Code/Python_GPIOZero_Code/18.2.1_StopWatch/StopWatch.py
+.. literalinclude:: ../../../freenove_Kit/Code/Python_GPIOZero_Code/13.2.1_StopWatch/StopWatch.py
     :linenos: 
     :language: python
     :lines: 44-60
@@ -269,7 +269,7 @@ Subfunction **display** (int dec) is used to make a 4-Digit 7-Segment Display a 
 
 Subfunction **timer()** is the timer callback function. When the time is up, this function will be executed. Accompanied by the execution, the variable counter will be added 1, and then reset the time of timer to 1s. 1s later, the function will be executed again.
 
-.. literalinclude:: ../../../freenove_Kit/Code/Python_GPIOZero_Code/18.2.1_StopWatch/StopWatch.py
+.. literalinclude:: ../../../freenove_Kit/Code/Python_GPIOZero_Code/13.2.1_StopWatch/StopWatch.py
     :linenos: 
     :language: python
     :lines: 61-67

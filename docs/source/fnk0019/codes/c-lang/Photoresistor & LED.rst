@@ -128,11 +128,11 @@ First, observe the project result, and then learn about the code in detail.
     
     :red:`If you have any concerns, please contact us via:` support@freenove.com
 
-1. Use ``cd`` command to enter 9.1.1_Nightlamp directory of C code.
+1. Use ``cd`` command to enter 09.1.1_Nightlamp directory of C code.
 
 .. code-block:: console
 
-    $ cd ~/Freenove_Kit/Code/C_Code/9.1.1_Nightlamp
+    $ cd ~/Freenove_Kit/Code/C_Code/09.1.1_Nightlamp
 
 2. Use following command to compile ``Nightlamp.cpp`` and generate executable file ``Nightlamp``.
 
@@ -150,6 +150,6 @@ After the program is executed, if you cover the Photoresistor or increase the li
 
 The following is the program code:
 
-.. literalinclude:: ../../../freenove_Kit/Code/C_Code/9.1.1_Nightlamp/Nightlamp.cpp
+.. literalinclude:: ../../../freenove_Kit/Code/C_Code/09.1.1_Nightlamp/Nightlamp.cpp
     :linenos: 
     :language: C
