@@ -1,8 +1,8 @@
 ######################################################
-FNK0076
+FNK0074
 ######################################################
 
-Freenove ESP8266 Board
+Freenove Super Starter Kit for ESP8266
 ******************************************************
 
 Download
@@ -10,7 +10,7 @@ Download
 
 Please download the full resources including code examples, datasheets, etc. first.
 
-`Click to download <https://github.com/Freenove/Freenove_ESP8266_Board/archive/refs/heads/main.zip>`_
+`Click to download <https://github.com/Freenove/Freenove_Super_Starter_Kit_for_ESP8266/archive/refs/heads/main.zip>`_
 
 Support
 ====================================================
@@ -32,5 +32,5 @@ This product provides the following online documents.
 .. toctree::
    :maxdepth: 1
 
-   fnk0076/codes/C.rst
-   fnk0076/codes/Python.rst
+   fnk0074/codes/C.rst
+   fnk0074/codes/Python.rst
