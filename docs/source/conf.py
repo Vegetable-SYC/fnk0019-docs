@@ -13,7 +13,7 @@ import sys
 sys.path.insert(0, pathlib.Path(__file__).parents[2].resolve().as_posix())
 
 os.system("rm -r freenove_Kit")
-os.system("git clone --depth 1 https://github.com/Freenove/Freenove_Basic_Starter_Kit_for_ESP8266 freenove_Kit")
+os.system("git clone --depth 1 https://github.com/Freenove/Freenove_ESP8266_Board freenove_Kit")
 
 # # 删除文件夹
 # os.system("rm -r _static")
@@ -33,7 +33,7 @@ os.system("git clone --depth 1 https://github.com/Freenove/Freenove_Basic_Starte
 # # 删除文件夹
 # os.system("rm -r freenove_css")
 
-project = 'fnk0075-docs'
+project = 'fnk0076-docs'
 copyright = '2016-2025, Freenove'
 author = 'Freenove'
 release = 'v1.0.0'

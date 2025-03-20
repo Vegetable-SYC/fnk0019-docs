@@ -71,7 +71,7 @@ Code
 
 Move the program folder "Freenove_Ultimate_Starter_Kit_for_ESP8266/Python/Python_Codes" to disk(D) in advance with the path of "D:/Micropython_Codes".
 
-Open "Thonny", click "This computer" -> "D:" -> "Micropython_Codes" -> "14.1_Control_LED_through_Web". and double click "Control_LED_through_Web". 
+Open "Thonny", click "This computer" -> "D:" -> "Micropython_Codes" -> "05.1_Control_LED_through_Web". and double click "Control_LED_through_Web". 
 
 Control_LED_through_Web
 ------------------------------------
@@ -95,7 +95,7 @@ You can click the corresponding button to control the LED on and off.
 
 The following is the program code:
 
-.. literalinclude:: ../../../freenove_Kit/Python/Python_Codes/14.1_Control_LED_through_Web/Control_LED_through_Web.py
+.. literalinclude:: ../../../freenove_Kit/Python/Python_Codes/05.1_Control_LED_through_Web/Control_LED_through_Web.py
     :linenos: 
     :language: python
     :lines: 1-81
@@ -103,7 +103,7 @@ The following is the program code:
 
 Import socket module and Import network module.
 
-.. literalinclude:: ../../../freenove_Kit/Python/Python_Codes/14.1_Control_LED_through_Web/Control_LED_through_Web.py
+.. literalinclude:: ../../../freenove_Kit/Python/Python_Codes/05.1_Control_LED_through_Web/Control_LED_through_Web.py
     :linenos: 
     :language: python
     :lines: 3-4
@@ -111,7 +111,7 @@ Import socket module and Import network module.
 
 Enter correct AP name and password.
 
-.. literalinclude:: ../../../freenove_Kit/Python/Python_Codes/14.1_Control_LED_through_Web/Control_LED_through_Web.py
+.. literalinclude:: ../../../freenove_Kit/Python/Python_Codes/05.1_Control_LED_through_Web/Control_LED_through_Web.py
     :linenos: 
     :language: python
     :lines: 9-10
@@ -119,7 +119,7 @@ Enter correct AP name and password.
 
 Set ESP8266 in Station mode and connect it to your router.
 
-.. literalinclude:: ../../../freenove_Kit/Python/Python_Codes/14.1_Control_LED_through_Web/Control_LED_through_Web.py
+.. literalinclude:: ../../../freenove_Kit/Python/Python_Codes/05.1_Control_LED_through_Web/Control_LED_through_Web.py
     :linenos: 
     :language: python
     :lines: 12-14
@@ -127,7 +127,7 @@ Set ESP8266 in Station mode and connect it to your router.
 
 "Shell" displays the IP address assigned to ESP8266.
 
-.. literalinclude:: ../../../freenove_Kit/Python/Python_Codes/14.1_Control_LED_through_Web/Control_LED_through_Web.py
+.. literalinclude:: ../../../freenove_Kit/Python/Python_Codes/05.1_Control_LED_through_Web/Control_LED_through_Web.py
     :linenos: 
     :language: python
     :lines: 20-20
@@ -135,7 +135,7 @@ Set ESP8266 in Station mode and connect it to your router.
 
 Click the button on the web page to control the LED light on and off.
 
-.. literalinclude:: ../../../freenove_Kit/Python/Python_Codes/14.1_Control_LED_through_Web/Control_LED_through_Web.py
+.. literalinclude:: ../../../freenove_Kit/Python/Python_Codes/05.1_Control_LED_through_Web/Control_LED_through_Web.py
     :linenos: 
     :language: python
     :lines: 64-73
