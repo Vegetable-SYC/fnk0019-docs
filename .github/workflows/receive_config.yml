@@ -3,11 +3,16 @@ on:
   repository_dispatch:
     types: [update-docs-config]
 
+env:
+  GITHUB_TOKEN: ${{ secrets.FNKDOCS }}
+
 jobs:
   update-config:
     runs-on: ubuntu-latest
     permissions:
       contents: write
+      issues: write
+      pull-requests: write
     
     steps:
       - uses: actions/checkout@v4
@@ -17,7 +22,7 @@ jobs:
       - name: Get Base Config
         uses: actions/checkout@v4
         with:
-          github-token: ${{ secrets.ACCESS_TOKEN }}
+          github-token: ${{ secrets.FNKDOCS }}
           repository: Vegetable-SYC/docs-base-config
           path: base-config  
           
