@@ -3,9 +3,6 @@ on:
   repository_dispatch:
     types: [update-docs-config]
 
-env:
-  GITHUB_TOKEN: ${{ secrets.FNKDOCS }}
-
 jobs:
   update-config:
     runs-on: ubuntu-latest
