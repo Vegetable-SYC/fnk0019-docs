@@ -18,13 +18,13 @@ jobs:
         uses: actions/checkout@v4
         with:
           repository: Vegetable-SYC/docs-base-config
-          path: base-config
+          path: base-config  # 关键路径标识
           
       - name: Merge Config
         run: |
-          python docs-base-config/update_workflow/sync_config.py \
-            --source docs-base-config/base_conf.py.tpl \
-            --target fnk0019-docs/docs/source/conf.py
+          python base-config/update_workflow/sync_config.py \ 
+            --source base-config/base_conf.py.tpl \           
+            --target docs/source/conf.py                      
           
       - name: Commit Changes
         run: |
