@@ -18,7 +18,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           repository: Vegetable-SYC/docs-base-config
-          path: base-config  # 关键路径标识
+          path: base-config  
           
       - name: Merge Config
         run: |
