@@ -6,10 +6,9 @@ on:
 jobs:
   update-config:
     runs-on: ubuntu-latest
-    permissions:
+    permissions: 
       contents: write
-      issues: write
-      pull-requests: write
+      actions: read  
     
     steps:
       - uses: actions/checkout@v4
