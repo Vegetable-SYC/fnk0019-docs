@@ -17,6 +17,7 @@ jobs:
       - name: Get Base Config
         uses: actions/checkout@v4
         with:
+          github-token: ${{ secrets.ACCESS_TOKEN }}
           repository: Vegetable-SYC/docs-base-config
           path: base-config  
           
