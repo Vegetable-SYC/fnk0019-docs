@@ -12,14 +12,12 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
+          path: main-repo  # 添加路径隔离
           fetch-depth: 0
           ref: ${{ github.event.client_payload.branch }}
 
       - name: Debug generated config
-        run: |
-          echo "Config file path: ${{ steps.config.outputs.config_path }}"
-          ls -la ${{ steps.config.outputs.config_path }}
-          cat ${{ steps.config.outputs.config_path }}
+        run: echo "Received branch: ${{ github.event.client_payload.branch }}"
 
       - name: Get Base Config
         uses: actions/checkout@v4
