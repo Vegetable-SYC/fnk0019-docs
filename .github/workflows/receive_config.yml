@@ -13,13 +13,7 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-          ref: ${{ github.event.client_payload.branch || 'main' }} # 关键修正点
-
-      - name: Apply Changes
-        run: |
-          # 这里添加您的配置更新逻辑
-          echo "Updating ${{ github.event.client_payload.branch }} branch"
-
+          
       - name: Get Base Config
         uses: actions/checkout@v4
         with:
