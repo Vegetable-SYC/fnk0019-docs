@@ -8,31 +8,37 @@ jobs:
     runs-on: ubuntu-latest
     permissions: 
       contents: write
-    
+
     steps:
+      - name: Clean workspace
+        run: rm -rf "${{ github.workspace }}/*" "${{ github.workspace }}/.git"
+
       - name: Checkout target branch
         uses: actions/checkout@v4
         with:
-          repository: ${{ github.repository }}  # 显式指定当前仓库
-          ref: ${{ github.event.client_payload.branch }}
+          repository: ${{ github.repository }}
+          ref: refs/heads/${{ github.event.client_payload.branch }}
           path: main-repo
+          clean: true
           fetch-depth: 0
+        env:
+          GIT_INIT_DEFAULT_BRANCH: ${{ github.event.client_payload.branch }}  # 关键环境变量
 
-      - name: Debug environment
-        working-directory: ./main-repo  # 关键：锁定操作目录
+      - name: Validate branch
+        working-directory: ./main-repo
         run: |
-          echo "Current branch: $(git branch --show-current)"
-          echo "Remote branches:"
-          git branch -r
+          echo "Expected branch: ${{ github.event.client_payload.branch }}"
+          echo "Actual branch: $(git branch --show-current)"
+          git branch -a
 
       - name: Get Base Config
         uses: actions/checkout@v4
         with:
           repository: Vegetable-SYC/docs-base-config
-          path: base-config 
+          path: base-config
 
       - name: Merge Config
-        working-directory: ./main-repo  # 确保在目标分支目录操作
+        working-directory: ./main-repo
         run: |
           python "${GITHUB_WORKSPACE}/base-config/update_workflow/sync_config.py" \
             --source "${GITHUB_WORKSPACE}/base-config/base_conf.py.tpl" \
@@ -41,13 +47,11 @@ jobs:
             --target_req "docs/requirements.txt"
 
       - name: Commit Changes
-        working-directory: ./main-repo  # 必须锁定目录
+        working-directory: ./main-repo
         run: |
           git config user.name "Docs Bot"
           git config user.email "docs-bot@example.com"
           git add docs/source/conf.py docs/requirements.txt
-          
-          # 显式指定远程和分支
-          git pull origin ${{ github.event.client_payload.branch }}
+          git pull origin ${{ github.event.client_payload.branch }}  # 防止冲突
           git commit -m "Auto-update docs config"
-          git push origin HEAD:${{ github.event.client_payload.branch }}
+          git push origin HEAD:refs/heads/${{ github.event.client_payload.branch }}  # 严格指定分支
