@@ -10,33 +10,44 @@ jobs:
       contents: write
     
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout target branch
+        uses: actions/checkout@v4
         with:
-          path: main-repo  # 添加路径隔离
-          fetch-depth: 0
+          repository: ${{ github.repository }}  # 显式指定当前仓库
           ref: ${{ github.event.client_payload.branch }}
+          path: main-repo
+          fetch-depth: 0
 
-      - name: Debug generated config
-        run: echo "Received branch: ${{ github.event.client_payload.branch }}"
+      - name: Debug environment
+        working-directory: ./main-repo  # 关键：锁定操作目录
+        run: |
+          echo "Current branch: $(git branch --show-current)"
+          echo "Remote branches:"
+          git branch -r
 
       - name: Get Base Config
         uses: actions/checkout@v4
         with:
           repository: Vegetable-SYC/docs-base-config
           path: base-config 
-          
+
       - name: Merge Config
+        working-directory: ./main-repo  # 确保在目标分支目录操作
         run: |
           python "${GITHUB_WORKSPACE}/base-config/update_workflow/sync_config.py" \
             --source "${GITHUB_WORKSPACE}/base-config/base_conf.py.tpl" \
-            --target "${GITHUB_WORKSPACE}/docs/source/conf.py" \
+            --target "docs/source/conf.py" \
             --source_req "${GITHUB_WORKSPACE}/base-config/requirements.txt.tpl" \
-            --target_req "${GITHUB_WORKSPACE}/docs/requirements.txt"
-          
+            --target_req "docs/requirements.txt"
+
       - name: Commit Changes
+        working-directory: ./main-repo  # 必须锁定目录
         run: |
-          git config --global user.name "Docs Bot"
-          git config --global user.email "docs-bot@example.com"
+          git config user.name "Docs Bot"
+          git config user.email "docs-bot@example.com"
           git add docs/source/conf.py docs/requirements.txt
+          
+          # 显式指定远程和分支
+          git pull origin ${{ github.event.client_payload.branch }}
           git commit -m "Auto-update docs config"
-          git push
+          git push origin HEAD:${{ github.event.client_payload.branch }}
