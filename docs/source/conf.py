@@ -9,15 +9,13 @@ from datetime import datetime
 import os
 import pathlib
 import sys
-from freenove import freenove
 
-syc = freenove
+sys.path.insert(0, pathlib.Path(__file__).parents[2].resolve().as_posix())
 
-syc.docs_init(Freenove_Super_Starter_Kit_for_ESP8266, 66)
+os.system("rm -r freenove_Kit")
+os.system("git clone --depth 1 https://github.com/Freenove/Freenove_Super_Starter_Kit_for_ESP8266 freenove_Kit")
+project = 'fnk0074-docs'
 
-def setup(app):
-    pass
-   
 # >>> BEGIN BASE CONFIG (AUTO-GENERATED)
 # !!! DO NOT EDIT THIS SECTION MANUALLY !!!
 copyright = '2016-2025, Freenove'
