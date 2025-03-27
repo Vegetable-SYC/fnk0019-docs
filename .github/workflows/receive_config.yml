@@ -24,7 +24,7 @@ jobs:
           
       - name: Merge Config
         run: |
-          python "${GITHUB_WORKSPACE}/docs-base-config/update_workflow/sync_config.py" \
+          python "../../docs-base-config/update_workflow/sync_config.py" \
                --source "./../docs-base-config/base-config/base_conf.py.tpl" \
                --target "${GITHUB_WORKSPACE}/docs/source/conf.py"                   
           
