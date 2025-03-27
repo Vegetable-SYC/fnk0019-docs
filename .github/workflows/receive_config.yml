@@ -1,0 +1,37 @@
+name: Update Docs Config
+on:
+  repository_dispatch:
+    types: [update-docs-config]
+
+jobs:
+  update-config:
+    runs-on: ubuntu-latest
+    permissions: 
+      contents: write
+    
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          
+      - name: Get Base Config
+        uses: actions/checkout@v4
+        with:
+          repository: Vegetable-SYC/docs-base-config
+          path: base-config 
+          
+      - name: Merge Config
+        run: |
+          python "${GITHUB_WORKSPACE}/base-config/update_workflow/sync_config.py" \
+            --source "${GITHUB_WORKSPACE}/base-config/base_conf.py.tpl" \
+            --target "${GITHUB_WORKSPACE}/docs/source/conf.py" \
+            --source_req "${GITHUB_WORKSPACE}/base-config/requirements.txt.tpl" \
+            --target_req "${GITHUB_WORKSPACE}/docs/requirements.txt"
+          
+      - name: Commit Changes
+        run: |
+          git config --global user.name "Docs Bot"
+          git config --global user.email "docs-bot@example.com"
+          git add docs/source/conf.py docs/requirements.txt
+          git commit -m "Auto-update docs config"
+          git push
