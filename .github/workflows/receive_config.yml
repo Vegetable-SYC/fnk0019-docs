@@ -10,27 +10,6 @@ jobs:
       contents: write
 
     steps:
-      - name: Clean workspace
-        run: rm -rf "${{ github.workspace }}/*" "${{ github.workspace }}/.git"
-
-      - name: Checkout target branch
-        uses: actions/checkout@v4
-        with:
-          repository: ${{ github.repository }}
-          ref: refs/heads/${{ github.event.client_payload.branch }}
-          path: main-repo
-          clean: true
-          fetch-depth: 0
-        env:
-          GIT_INIT_DEFAULT_BRANCH: ${{ github.event.client_payload.branch }}  # 关键环境变量
-
-      - name: Validate branch
-        working-directory: ./main-repo
-        run: |
-          echo "Expected branch: ${{ github.event.client_payload.branch }}"
-          echo "Actual branch: $(git branch --show-current)"
-          git branch -a
-
       - name: Get Base Config
         uses: actions/checkout@v4
         with:
