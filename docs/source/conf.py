@@ -132,7 +132,6 @@ def setup(app):
     # app.add_css_file("css/custom.css")
     # app.add_css_file('https://cdn.jsdelivr.net/gh/Freenove/freenove-docs/docs/source/_static/css/custom.css')
 
-我再测试一下
 # <<< END BASE CONFIG
 
 
