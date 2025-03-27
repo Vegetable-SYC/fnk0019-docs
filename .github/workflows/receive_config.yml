@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     permissions: 
       contents: write
-      pull-requests: write  # 新增必要权限
+      push: write  # 新增必要权限
 
     steps:
       # 步骤1：检出目标分支（必须前置）
