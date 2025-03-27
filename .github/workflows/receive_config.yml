@@ -16,7 +16,10 @@ jobs:
           ref: ${{ github.event.client_payload.branch }}
 
       - name: Debug generated config
-        run: cat ${{ steps.config.outputs.config_path }}    
+        run: |
+          echo "Config file path: ${{ steps.config.outputs.config_path }}"
+          ls -la ${{ steps.config.outputs.config_path }}
+          cat ${{ steps.config.outputs.config_path }}
 
       - name: Get Base Config
         uses: actions/checkout@v4
