@@ -8,61 +8,30 @@ jobs:
     runs-on: ubuntu-latest
     permissions: 
       contents: write
-      push: write  # 新增必要权限
-
+    
     steps:
-      # 步骤1：检出目标分支（必须前置）
-      - name: Checkout target branch
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
         with:
-          repository: ${{ github.repository }}
-          ref: ${{ github.event.client_payload.branch }}
-          path: main-repo
-          token: ${{ secrets.SYC_TOKEN }}
-          clean: true
-
-      # 步骤2：调试事件负载
-      - name: Debug Event Payload
-        run: |
-          echo "Received branch: ${{ github.event.client_payload.branch }}"
-          git -C ./main-repo branch -a
-
-      # 步骤3：获取基础配置
+          fetch-depth: 0
+          
       - name: Get Base Config
         uses: actions/checkout@v4
         with:
           repository: Vegetable-SYC/docs-base-config
-          path: base-config
-          token: ${{ secrets.SYC_TOKEN }}
-
-      # 步骤4：合并配置（严格路径控制）
+          path: base-config 
+          
       - name: Merge Config
-        working-directory: ./main-repo
         run: |
           python "${GITHUB_WORKSPACE}/base-config/update_workflow/sync_config.py" \
             --source "${GITHUB_WORKSPACE}/base-config/base_conf.py.tpl" \
-            --target "docs/source/conf.py" \
+            --target "${GITHUB_WORKSPACE}/docs/source/conf.py" \
             --source_req "${GITHUB_WORKSPACE}/base-config/requirements.txt.tpl" \
-            --target_req "docs/requirements.txt"
-
-      # 步骤5：提交变更（增强错误处理）
+            --target_req "${GITHUB_WORKSPACE}/docs/requirements.txt"
+          
       - name: Commit Changes
-        working-directory: ./main-repo
         run: |
-          # 防止空提交导致失败
-          if [[ -z $(git status --porcelain) ]]; then
-            echo "No changes to commit"
-            exit 0
-          fi
-
-          git config user.name "Docs Bot"
-          git config user.email "docs-bot@example.com"
+          git config --global user.name "Docs Bot"
+          git config --global user.email "docs-bot@example.com"
           git add docs/source/conf.py docs/requirements.txt
-
-          # 使用强制推送防止历史冲突
-          git pull origin ${{ github.event.client_payload.branch }} --rebase
           git commit -m "Auto-update docs config"
-          git push origin HEAD:${{ github.event.client_payload.branch }} --force
-
-          # 触发二次验证
-          echo "::notice::Successfully pushed to ${{ github.event.client_payload.branch }}"
+          git push
