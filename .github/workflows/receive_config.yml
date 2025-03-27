@@ -36,6 +36,7 @@ jobs:
         with:
           repository: Vegetable-SYC/docs-base-config
           path: base-config
+          token: ${{ secrets.SYC_TOKEN }}
 
       - name: Merge Config
         working-directory: ./main-repo
