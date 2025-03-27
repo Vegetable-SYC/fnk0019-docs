@@ -26,10 +26,14 @@ jobs:
             --source "${GITHUB_WORKSPACE}/base-config/base_conf.py.tpl" \
             --target "${GITHUB_WORKSPACE}/docs/source/conf.py"
           
+          python "${GITHUB_WORKSPACE}/base-config/update_workflow/sync_config.py" \
+            --source_req "${GITHUB_WORKSPACE}/base-config/requirements.txt.tpl" \
+            --target_req "${GITHUB_WORKSPACE}/docs/requirements.txt"
+          
       - name: Commit Changes
         run: |
           git config --global user.name "Docs Bot"
           git config --global user.email "docs-bot@example.com"
-          git add docs/source/conf.py
+          git add docs/source/conf.py docs/source/requirements.txt
           git commit -m " Auto-update docs config"
           git push
