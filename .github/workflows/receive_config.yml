@@ -8,7 +8,6 @@ jobs:
     runs-on: ubuntu-latest
     permissions: 
       contents: write
-      actions: read  
     
     steps:
       - uses: actions/checkout@v4
@@ -18,15 +17,14 @@ jobs:
       - name: Get Base Config
         uses: actions/checkout@v4
         with:
-          github-token: ${{ secrets.SYC_TOKEN }}
           repository: Vegetable-SYC/docs-base-config
-          path: base-config  
+          path: base-config 
           
       - name: Merge Config
         run: |
-          python "../../docs-base-config/update_workflow/sync_config.py" \
-               --source "./../docs-base-config/base-config/base_conf.py.tpl" \
-               --target "${GITHUB_WORKSPACE}/docs/source/conf.py"                   
+          python "${GITHUB_WORKSPACE}/base-config/update_workflow/sync_config.py" \
+            --source "${GITHUB_WORKSPACE}/base-config/base_conf.py.tpl" \
+            --target "${GITHUB_WORKSPACE}/docs/source/conf.py"
           
       - name: Commit Changes
         run: |
