@@ -1,12 +1,16 @@
 // JavaScript Document
-$(document).ready(function () {
+// 等待整个窗口（包括图片、CSS等）完全加载后再执行
+$(window).on('load', function () {
+    // 这两步的顺序很重要：先注入HTML，再计算尺寸
     setNavBar();
-    NaviResize();
-
+    NaviResize(); 
 });
+
+// 窗口大小改变时，依然实时重新计算
 $(window).resize(function () {
     NaviResize();
 });
+
 
 function NaviResize() {
     var navWidth = $('.wy-nav-side').width() + $('.wy-nav-content').outerWidth(true) + $('.wy-nav-side').offset().left;
