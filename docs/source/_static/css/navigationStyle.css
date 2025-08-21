@@ -153,6 +153,10 @@ nav.wy-nav-top {
     background-color: #111;
 }
 
+.nav_fn > ul > li:not(:first-child) {
+    border-left: 1px solid #555; /* 你可以调整颜色和粗细 */
+}
+
 /* 3. 媒体查询：只在移动端（屏幕宽度小于768px）显示这个按钮 */
 @media screen and (max-width: 767px) {
     /* 同样使用高优先级的选择器来显示它 */
