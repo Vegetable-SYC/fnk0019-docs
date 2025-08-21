@@ -28,8 +28,8 @@ function NaviResize() {
 
     // 根据新的宽度动态调整字体大小
     var fontSize = navItemWidth * 0.15;
-    if (fontSize < 8) {
-        fontSize = 8;
+    if (fontSize < 10) {
+        fontSize = 10;
     }
     $(".nav_fn>ul a").css("font-size", fontSize + "px");
 
