@@ -9,15 +9,40 @@ $(window).resize(function () {
 });
 
 function NaviResize() {
+    // 1. 计算导航栏应该占据的总宽度
     var navWidth = $('.wy-nav-side').width() + $('.wy-nav-content').outerWidth(true) + $('.wy-nav-side').offset().left;
-    var navHeight = $(".extrabody-content").height();
-    var navItemWidth = navWidth / 7;
-    navItemWidth = navItemWidth < 60 ? 60 : navItemWidth;
-    var navItemHeight = navItemWidth / 5;
-    $(".nav_fn>ul>li").width(navItemWidth);
-    $(".nav_fn>ul>li").height($(".extrabody-content").height);
-    $(".nav_fn>ul a").css("font-size", navItemWidth * 0.15 + "px");
+    
+    // 为了防止在某些情况下计算出错，确保navWidth不超过窗口宽度
+    if (navWidth > $(window).width()) {
+        navWidth = $(window).width();
+    }
+    
+    // 将总宽度应用到导航栏的父容器上，这能确保布局的稳定性
+    $('.nav_fn').width(navWidth);
 
+    // 2. 计算每个导航项应该占据的宽度（总宽度 / 7个项目）
+    var navItemWidth = navWidth / 7;
+
+    // 3. (核心修改) 移除最小宽度的限制！
+    // 移除下面这行: navItemWidth = navItemWidth < 60 ? 60 : navItemWidth;
+
+    // 4. 将计算好的宽度应用到每一个 <li> 元素上
+    $(".nav_fn>ul>li").width(navItemWidth);
+
+    // 5. 根据新的、可能会很小的 navItemWidth 来动态调整字体大小
+    // 这个比例(0.15)你可以根据视觉效果微调
+    var fontSize = navItemWidth * 0.15;
+    // 添加一个最小字体大小，防止字小到看不见
+    if (fontSize < 8) { 
+        fontSize = 8;
+    }
+    $(".nav_fn>ul a").css("font-size", fontSize + "px");
+
+    // 6. 设置高度 (你的代码中这部分有点问题，需要修正)
+    // 应该是 $(".extrabody-content").height()，注意是函数调用
+    var navHeight = $(".extrabody-content").height();
+    $(".nav_fn>ul>li").height(navHeight);
+    $(".nav_fn").height(navHeight); // 顺便也设置一下父容器的高度
 }
 
 let navBarHtml =
