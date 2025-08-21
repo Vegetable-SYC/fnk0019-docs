@@ -1,52 +1,41 @@
 // JavaScript Document
+
 $(window).on('load', function () {
-    // 这两步的顺序很重要：先注入HTML，再计算尺寸
     setNavBar();
-    NaviResize(); 
+
+    // 为了应对RTD脚本的延迟执行，我们多次、延迟调用Resize函数
+    NaviResize(); // 立即执行一次
 });
 
 $(window).resize(function () {
+    // 窗口大小改变时，实时重新计算
     NaviResize();
 });
 
-function setNavBar() {
-    let navBar = document.getElementById('navContent');
-    navBar.innerHTML = navBarHtml;
-}
-
 function NaviResize() {
-    // ========================================================================
-    // == 核心修正：不再测量内部元素，直接使用最可靠的浏览器窗口宽度 ==
-    // ========================================================================
-    var navWidth = $(window).width();
-
-    // 将计算好的总宽度应用到导航栏的父容器上
+    // 步骤1：测量RTD内容区的真实宽度，解决右侧缝隙问题
+    // 我们仍然使用这个最精确的测量方法，但不再害怕时序问题了
+    var navWidth = $('.wy-nav-side').width() + $('.wy-nav-content').outerWidth(true) + $('.wy-nav-side').offset().left;
+    // 防止计算值超出窗口宽度
+    if (navWidth > $(window).width()) {
+      navWidth = $(window).width();
+    }
     $('.nav_fn').width(navWidth);
 
-    // 判断自定义按钮是否可见来决定它的宽度（移动端可见，桌面端为0）
-    var toggleBtn = $(".nav-side-toggle");
-    var toggleBtnWidth = toggleBtn.is(":visible") ? toggleBtn.outerWidth() : 0;
+    // 步骤2：调整字体大小
+    // Flexbox已经自动分配好了宽度，我们只需随便拿一个li来测量即可
+    var navItemWidth = $(".nav_fn>ul>li").not(".nav-side-toggle").first().width();
 
-    // 从总宽度中减去按钮的宽度，剩下的空间给其他7个链接
-    var remainingWidth = navWidth - toggleBtnWidth;
-    var navItemCount = 7; // 我们有7个导航链接
-    var navItemWidth = remainingWidth / navItemCount;
-
-    // 把计算好的宽度应用到除了切换按钮之外的其他 li 上
-    $(".nav_fn>ul>li").not(".nav-side-toggle").width(navItemWidth);
-
-    // 根据新的宽度动态调整字体大小
-    var fontSize = navItemWidth * 0.15;
-    if (fontSize < 10) { // 设置一个最小字体大小，防止字小到看不见
-        fontSize = 10;
+    if (navItemWidth > 0) { // 确保宽度有效
+        var fontSize = navItemWidth * 0.15;
+        if (fontSize < 12) { fontSize = 12; }
+        $(".nav_fn>ul a").css("font-size", fontSize + "px");
     }
-    $(".nav_fn>ul a").css("font-size", fontSize + "px");
 
-    // 设置高度
+    // 步骤3: 修正高度（可选，因为CSS可能已经处理了）
     var navHeight = $(".extrabody-content").height();
-    if (navHeight > 0) { // 确保获取到的高度有效
-        $(".nav_fn>ul>li").height(navHeight);
-        $(".nav_fn").height(navHeight);
+    if (navHeight > 0) {
+      $(".nav_fn").height(navHeight);
     }
 }
 
@@ -141,6 +130,11 @@ let footerHtml = `
 let pageHeaderHtml=`
 Need help? Contact <a href="mailto:support@freenove.com">support@freenove.com</a>
 `;
+
+function setNavBar() {
+    let navBar = document.getElementById('navContent');
+    navBar.innerHTML = navBarHtml;
+}
 
 function setPageLogo() {
     var link =      document.querySelector("link[rel*='icon']") ||      document.createElement("link");
