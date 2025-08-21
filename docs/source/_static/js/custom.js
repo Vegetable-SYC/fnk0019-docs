@@ -1,16 +1,18 @@
 // JavaScript Document
-// 等待整个窗口（包括图片、CSS等）完全加载后再执行
 $(window).on('load', function () {
     // 这两步的顺序很重要：先注入HTML，再计算尺寸
     setNavBar();
     NaviResize(); 
 });
 
-// 窗口大小改变时，依然实时重新计算
 $(window).resize(function () {
     NaviResize();
 });
 
+function setNavBar() {
+    let navBar = document.getElementById('navContent');
+    navBar.innerHTML = navBarHtml;
+}
 
 function NaviResize() {
     var navWidth = $('.wy-nav-side').width() + $('.wy-nav-content').outerWidth(true) + $('.wy-nav-side').offset().left;
@@ -48,8 +50,8 @@ let navBarHtml =
   <div class="nav_fn">
     <ul>
         <li class="nav-side-toggle">
-            <div class="nav-side-btn">
-                <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+            <div class="nav-side-btn" data-toggle="wy-nav-top">
+                <i class="fa fa-bars"></i>
             </div>
         </li>
         <!-- <li class="navLogo"><a href="/index.html"></a></li> -->
@@ -134,11 +136,6 @@ let footerHtml = `
 let pageHeaderHtml=`
 Need help? Contact <a href="mailto:support@freenove.com">support@freenove.com</a>
 `;
-
-function setNavBar() {
-    let navBar = document.getElementById('navContent');
-    navBar.innerHTML = navBarHtml;
-}
 
 function setPageLogo() {
     var link =      document.querySelector("link[rel*='icon']") ||      document.createElement("link");
