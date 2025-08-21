@@ -3,27 +3,25 @@
 # For the full list of built-in configuration values, see the documentation:
 # https://www.sphinx-doc.org/en/master/usage/configuration.html
 
-# If extensions (or modules to document with autodoc) are in another directory,
-# add these directories to sys.path here.
 from datetime import datetime
+from docutils import nodes
 import os
 import pathlib
 import sys
-
 sys.path.insert(0, pathlib.Path(__file__).parents[2].resolve().as_posix())
 
-# 克隆项目代码地址
-os.system("rm -r freenove_Kit")
-os.system("git clone --depth 1 https://github.com/Freenove/Freenove_Three-wheeled_Smart_Car_Kit_for_Raspberry_Pi freenove_Kit")
+# os.system("rm -r freenove_kit")
+# os.system("git clone --depth 1 https://github.com/Freenove/Freenove_Ultimate_Starter_Kit_for_Raspberry_Pi freenove_kit")
 
-project = "fnk0021-docs"
+# -- Project information -----------------------------------------------------
+# https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
-# <!!!BEGIN!!!>
+project = 'freenove-docs'
 copyright = '2016-2025, Freenove'
 author = 'Freenove'
 release = 'v1.0.0'
 version = 'v1.0.0'
-# 分支测试第53次
+
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
 
@@ -86,7 +84,7 @@ gettext_uuid = True  # optional.
 
 rst_prolog = """
 .. include:: <s5defs.txt>
-.. include:: ../../../_static/style/custom-style.txt
+.. include:: ../_static/style/custom-style.txt
 """
 
 variables_to_export = [
@@ -104,14 +102,17 @@ print(rst_prolog)
 del frozen_locals
 
 html_css_files = [
-    'https://cdn.jsdelivr.net/gh/Freenove/freenove-docs/docs/source/_static/css/color-roles.css',
-    'https://cdn.jsdelivr.net/gh/Freenove/freenove-docs/docs/source/_static/css/custom.css',
-    'https://cdn.jsdelivr.net/gh/Freenove/freenove-docs/docs/source/_static/css/navigationStyle.css',
+    "css/color-roles.css",
+    "css/custom.css",
+    "css/navigationStyle.css",
+    # 'https://cdn.jsdelivr.net/gh/Freenove/freenove-docs@latest/docs/source/_static/css/color-roles.css',
+    # 'https://cdn.jsdelivr.net/gh/Freenove/freenove-docs@latest/docs/source/_static/css/custom.css',
+    # 'https://cdn.jsdelivr.net/gh/Freenove/freenove-docs@latest/docs/source/_static/css/navigationStyle.css',
 ]
 
 html_js_files = [
-    'https://cdn.jsdelivr.net/gh/Freenove/freenove-docs/docs/source/_static/js/custom.js',
-    # 'js/custom.js'
+    # 'https://cdn.jsdelivr.net/gh/Freenove/freenove-docs@latest/docs/source/_static/js/custom.js',
+    'js/custom.js'
 ]
 
 extlinks = {
@@ -127,10 +128,29 @@ intersphinx_mapping = {
 }
 intersphinx_disabled_reftypes = ["*"]
 
+def combined_class_role(name, rawtext, text, lineno, inliner, options={}, content=[]):
+    try:
+        #
+        class_names, content_text = text.split(':', 1)
+        # remove extra spaces and create a list of class
+        classes = class_names.strip().split()
+
+        # create a span node with these class
+        node = nodes.inline(text=content_text.strip(), classes=classes)
+
+        return [node], []
+    except ValueError:
+        # error handle
+        msg = inliner.reporter.error(
+            'The "combo" role requires a "class_names:text" format.',
+            line=lineno)
+        prb = inliner.problematic(rawtext, rawtext, msg)
+        return [prb], [msg]
 
 def setup(app):
-    pass
+    app.add_role("combo", combined_class_role)
+    # pass
     # app.add_css_file("css/custom.css")
     # app.add_css_file('https://cdn.jsdelivr.net/gh/Freenove/freenove-docs/docs/source/_static/css/custom.css')
 
-# <!!!END!!!>
+suppress_warnings = ['autosectionlabel.*']

@@ -1,66 +1,57 @@
-##################################################################
-FNK0021-Freenove Three-wheeled Smart Car Kit for Raspberry Pi
-##################################################################
+################################################################
+Freenove Documentation
+################################################################
 
-FNK0021
-******************************
+This is the product documentation for Freenove.
 
-.. toctree::
-   :maxdepth: 1
-   :caption: Welcome
-   :glob:
+Welcome 
+***********
 
-   fnk0021/codes/tutorial/Welcome.rst
+Thank you for choosing Freenove products!
 
-.. toctree::
-   :maxdepth: 1
-   :caption: List
-   :glob:
+Get Product Tutorial
+****************************************************************
 
-   fnk0021/codes/tutorial/List.rst
+Click on the link below to obtain your product tutorial.
 
-.. toctree::
-   :maxdepth: 1
-   :caption: Preface
-   :glob:
+:ref:`Select by SKU (the FNK No. on the product box) <products/by_sku:tutorial>`
 
-   fnk0021/codes/tutorial/Preface.rst
-
-.. toctree::
-   :maxdepth: 1
-   :caption: Preface
-   :glob:
-
-   fnk0021/codes/tutorial/Preparation.rst
-
-.. toctree::
-   :maxdepth: 1
-   :caption: Smart Car Shield for RPi
-   :glob:
-
-   fnk0021/codes/tutorial/Smart_Car_Shield_for_RPi.rst
-
-.. toctree::
-   :maxdepth: 1
-   :caption: Projects
-   :glob:
-
-   fnk0021/codes/tutorial/0_Software.rst
-
-.. toctree::
-   :maxdepth: 1
-   :numbered:
-   :glob:
-
-   fnk0021/codes/tutorial/1_Smart_video_car.rst
-   fnk0021/codes/tutorial/2_Ultrasonic_Radar_Car.rst
-   fnk0021/codes/tutorial/3_Part_of_the_Code.rst
-   fnk0021/codes/tutorial/4_Contributions_of_other_developers.rst
-   fnk0021/codes/tutorial/5_Free_your_innovation.rst
+:ref:`Browse by Series <products>`  
    
+.. tip::
+   * :red:`Product quality issues`
+   * :red:`Technical support`
+   * :red:`Any other questions / supports`
+
+   | Please contact us via: support@freenove.com
+   | We are responsible for our products.
+
+.. tip::
+   * :red:`製品品質の問題`
+   * :red:`テクニカルサポート`
+   * :red:`その他の質問 / サポート`
+
+   | お問い合わせは support@freenove.com までお願いします。
+   | 当社は自社製品に対して責任を負います。
+
 .. toctree::
    :maxdepth: 1
-   :caption: What's next?
-   :glob:
+   :titlesonly:
+   :hidden:
+   :caption: Products
 
-   fnk0021/codes/tutorial/What_s_next.rst
+   products/by_sku.rst
+   products/products.rst
+
+.. toctree::
+   :maxdepth: 2
+   :titlesonly:
+   :caption: About Freenove
+
+   about-freenove/tutorial.rst
+   about-freenove/support.rst
+   about-freenove/app.rst
+   about-freenove/contact.rst
+   about-freenove/about.rst
+   
+   
