@@ -15,34 +15,39 @@ function setNavBar() {
 }
 
 function NaviResize() {
-    var navWidth = $('.wy-nav-side').width() + $('.wy-nav-content').outerWidth(true) + $('.wy-nav-side').offset().left;
-    if (navWidth > $(window).width()) {
-        navWidth = $(window).width();
-    }
+    // ========================================================================
+    // == 核心修正：不再测量内部元素，直接使用最可靠的浏览器窗口宽度 ==
+    // ========================================================================
+    var navWidth = $(window).width();
+
+    // 将计算好的总宽度应用到导航栏的父容器上
     $('.nav_fn').width(navWidth);
 
-    // -- 核心修改在这里 --
-    // 获取切换按钮的宽度（在桌面端它是隐藏的，宽度为0，不影响计算）
-    var toggleBtnWidth = $(".nav-side-toggle").outerWidth() || 0;
+    // 判断自定义按钮是否可见来决定它的宽度（移动端可见，桌面端为0）
+    var toggleBtn = $(".nav-side-toggle");
+    var toggleBtnWidth = toggleBtn.is(":visible") ? toggleBtn.outerWidth() : 0;
 
     // 从总宽度中减去按钮的宽度，剩下的空间给其他7个链接
     var remainingWidth = navWidth - toggleBtnWidth;
-    var navItemWidth = remainingWidth / 7;
+    var navItemCount = 7; // 我们有7个导航链接
+    var navItemWidth = remainingWidth / navItemCount;
 
     // 把计算好的宽度应用到除了切换按钮之外的其他 li 上
     $(".nav_fn>ul>li").not(".nav-side-toggle").width(navItemWidth);
 
     // 根据新的宽度动态调整字体大小
     var fontSize = navItemWidth * 0.15;
-    if (fontSize < 10) {
+    if (fontSize < 10) { // 设置一个最小字体大小，防止字小到看不见
         fontSize = 10;
     }
     $(".nav_fn>ul a").css("font-size", fontSize + "px");
 
     // 设置高度
     var navHeight = $(".extrabody-content").height();
-    $(".nav_fn>ul>li").height(navHeight);
-    $(".nav_fn").height(navHeight);
+    if (navHeight > 0) { // 确保获取到的高度有效
+        $(".nav_fn>ul>li").height(navHeight);
+        $(".nav_fn").height(navHeight);
+    }
 }
 
 let navBarHtml =
