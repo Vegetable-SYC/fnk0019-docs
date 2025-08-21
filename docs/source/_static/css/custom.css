@@ -24,22 +24,6 @@
     z-index: 2;
 }
 
-/*
- * 修复RTD移动端导航切换按钮的位置和层级问题 (加强版)
-*/
-a[data-toggle="wy-nav-shift"] {
-    position: fixed !important;             /* 强制固定定位 */
-    top: var(--fn_nav_height) !important;   /* 强制顶部距离 */
-    left: 0 !important;                     /* 强制左侧距离 */
-    z-index: 9999 !important;               /* 强制设置一个超高的层级，确保在最顶层 */
-
-    /* 样式优化 */
-    background-color: #343131 !important;
-    color: white !important;
-    border-bottom-right-radius: 5px !important;
-    padding: 0.4em 0.8em !important;
-}
-
 /* ---------------------------------------------------------------------------------------------- */
 /* description: freenove-docs QR code style
 

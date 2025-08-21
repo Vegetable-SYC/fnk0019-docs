@@ -111,3 +111,39 @@
 .nav_fn .navDropDown:hover .dropDownContent {
 	display: block;
 }
+
+nav.wy-nav-top {
+    display: none !important;
+}
+
+/* 2. 我们自定义的侧边栏切换按钮的样式 */
+.nav_fn ul .nav-side-toggle {
+    display: none; 
+    width: var(--fn_nav_height); 
+    height: var(--fn_nav_height);
+    /* 覆盖掉li的通用宽度计算，让它保持固定大小 */
+    width: 45px !important; 
+}
+
+.nav-side-btn {
+    height: 100%;
+    width: 100%;
+    color: white;
+    cursor: pointer;
+    font-size: 1.2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.nav-side-btn:hover {
+    background-color: #111;
+}
+
+/* 3. 媒体查询：只在移动端（屏幕宽度小于768px）显示这个按钮 */
+@media screen and (max-width: 767px) {
+    /* 同样使用高优先级的选择器来显示它 */
+    .nav_fn ul .nav-side-toggle {
+        display: block;
+    }
+}

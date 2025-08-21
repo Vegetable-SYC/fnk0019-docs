@@ -9,46 +9,45 @@ $(window).resize(function () {
 });
 
 function NaviResize() {
-    // 1. 计算导航栏应该占据的总宽度
     var navWidth = $('.wy-nav-side').width() + $('.wy-nav-content').outerWidth(true) + $('.wy-nav-side').offset().left;
-    
-    // 为了防止在某些情况下计算出错，确保navWidth不超过窗口宽度
     if (navWidth > $(window).width()) {
         navWidth = $(window).width();
     }
-    
-    // 将总宽度应用到导航栏的父容器上，这能确保布局的稳定性
     $('.nav_fn').width(navWidth);
 
-    // 2. 计算每个导航项应该占据的宽度（总宽度 / 7个项目）
-    var navItemWidth = navWidth / 7;
+    // -- 核心修改在这里 --
+    // 获取切换按钮的宽度（在桌面端它是隐藏的，宽度为0，不影响计算）
+    var toggleBtnWidth = $(".nav-side-toggle").outerWidth() || 0;
 
-    // 3. (核心修改) 移除最小宽度的限制！
-    // 移除下面这行: navItemWidth = navItemWidth < 60 ? 60 : navItemWidth;
+    // 从总宽度中减去按钮的宽度，剩下的空间给其他7个链接
+    var remainingWidth = navWidth - toggleBtnWidth;
+    var navItemWidth = remainingWidth / 7;
 
-    // 4. 将计算好的宽度应用到每一个 <li> 元素上
-    $(".nav_fn>ul>li").width(navItemWidth);
+    // 把计算好的宽度应用到除了切换按钮之外的其他 li 上
+    $(".nav_fn>ul>li").not(".nav-side-toggle").width(navItemWidth);
 
-    // 5. 根据新的、可能会很小的 navItemWidth 来动态调整字体大小
-    // 这个比例(0.15)你可以根据视觉效果微调
+    // 根据新的宽度动态调整字体大小
     var fontSize = navItemWidth * 0.15;
-    // 添加一个最小字体大小，防止字小到看不见
-    if (fontSize < 8) { 
+    if (fontSize < 8) {
         fontSize = 8;
     }
     $(".nav_fn>ul a").css("font-size", fontSize + "px");
 
-    // 6. 设置高度 (你的代码中这部分有点问题，需要修正)
-    // 应该是 $(".extrabody-content").height()，注意是函数调用
+    // 设置高度
     var navHeight = $(".extrabody-content").height();
     $(".nav_fn>ul>li").height(navHeight);
-    $(".nav_fn").height(navHeight); // 顺便也设置一下父容器的高度
+    $(".nav_fn").height(navHeight);
 }
 
 let navBarHtml =
     `
   <div class="nav_fn">
     <ul>
+        <li class="nav-side-toggle">
+            <div class="nav-side-btn">
+                <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+            </div>
+        </li>
         <!-- <li class="navLogo"><a href="/index.html"></a></li> -->
         <li>
             <div class="navDropDown">
