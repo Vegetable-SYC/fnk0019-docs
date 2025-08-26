@@ -24,6 +24,10 @@
     z-index: 2;
 }
 
+.rst-versions {
+    display: none !important;
+}
+
 /* ---------------------------------------------------------------------------------------------- */
 /* description: freenove-docs QR code style
 
