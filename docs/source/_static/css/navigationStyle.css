@@ -4,7 +4,7 @@
     --fn_nav_height: 2.8rem;
 }
 
-/* 1. 为浮动的导航栏在页面顶部腾出空间 */
+/* 隐藏页面顶部的区域 */
 div.wy-nav-content {
     padding-top: calc(var(--fn_nav_height) + 1.618em);
 }
@@ -184,6 +184,9 @@ nav.wy-nav-top {
         display: flex;
     }
 	.wy-grid-for-nav {
+   		margin-top: var(--fn_nav_height);
+	}
+	.wy-side-nav-search {
    		margin-top: var(--fn_nav_height);
 	}
 }

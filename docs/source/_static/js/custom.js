@@ -48,12 +48,12 @@ function listenForMenuToggle() {
  */
 function updateNavBarLayout() {
     const navBar = $('.nav_fn');
-    const mobileBreakpoint = 767;
+    const mobileBreakpoint = 752;
 
     if (!navBar.length) return; // 如果导航栏不存在则退出
 
     // [核心修复] 判断当前是移动端还是桌面端
-    if ($(window).width() <= mobileBreakpoint) {
+    if ($(window).width() < mobileBreakpoint) {
         // --- 移动端逻辑 ---
         // 强制导航栏全宽，忽略 .wy-nav-content 的滑动
         navBar.css({
