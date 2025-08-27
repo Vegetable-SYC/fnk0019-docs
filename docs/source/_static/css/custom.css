@@ -4,6 +4,10 @@
     --fn_nav_fontsize: 1.5rem;
 }
 
+.rst-versions {
+    display: none !important;
+}
+
 /* ---------------------------------------------------------------------------------------------- */
 /* description: freenove-docs QR code style
 
