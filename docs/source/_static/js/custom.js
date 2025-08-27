@@ -79,7 +79,18 @@ function updateNavBarLayout() {
     if (navItemWidth > 0) {
         let fontSize = navItemWidth * 0.15;
         if (fontSize < 12) { fontSize = 12; }
+        
+        let subfontSize = fontSize * 0.9;
+        if (subfontSize < 6) { subfontSize = 6; }
+
+        let dropfontSize = navItemWidth * 0.1;
+        if (dropfontSize < 1) { dropfontSize = 1; }
+
+        navBar.find(".dropDownContent a").css("font-size", subfontSize + "px");
+
         navBar.find(">ul a").css("font-size", fontSize + "px");
+
+        navBar.find(".has-dropdown").css("font-size", dropfontSize + "px");
     }
 }
 
