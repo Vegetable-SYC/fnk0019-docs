@@ -8,7 +8,7 @@
     display: none !important;
 }
 
-.floating container bottom-right {
+div.floating.container.bottom-right {
     display: none !important;
 }
 
