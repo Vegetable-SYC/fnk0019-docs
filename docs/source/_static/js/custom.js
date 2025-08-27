@@ -80,7 +80,7 @@ function updateNavBarLayout() {
         let fontSize = navItemWidth * 0.15;
         if (fontSize < 12) { fontSize = 12; }
         
-        let subfontSize = fontSize * 0.9;
+        let subfontSize = fontSize * 0.5;
         if (subfontSize < 6) { subfontSize = 6; }
 
         let dropfontSize = navItemWidth * 0.1;
