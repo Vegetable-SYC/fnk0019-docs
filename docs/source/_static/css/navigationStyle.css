@@ -202,4 +202,13 @@ nav.wy-nav-top {
     .nav_fn ul .nav-side-toggle {
         display: flex;
     }
+
+	.has-dropdown::after {
+        display: none !important;
+    }
+
+	/* 将 a 标签恢复为块级，让文字正常居中 */
+    .has-dropdown > a.dropBtn {
+        display: block;
+    }
 }
