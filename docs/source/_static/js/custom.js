@@ -1,44 +1,89 @@
 // JavaScript Document
 
+/* ---------------------------------------------------------------------------------------------- */
+/* description: Implementation code for the navigation bar
+
+ * author: vegetable-syc
+
+ * date: 2025/08/21
+ */
+
 $(window).on('load', function () {
     setNavBar();
-
-    // 为了应对RTD脚本的延迟执行，我们多次、延迟调用Resize函数
-    NaviResize(); // 立即执行一次
+    updateNavBarLayout();
+    
+    // [新增] 监听汉堡菜单的点击事件，以控制页面滚动
+    listenForMenuToggle();
 });
 
 $(window).resize(function () {
-    // 窗口大小改变时，实时重新计算
-    NaviResize();
+    updateNavBarLayout();
 });
 
-function NaviResize() {
-    // 步骤1：测量RTD内容区的真实宽度，解决右侧缝隙问题
-    // 我们仍然使用这个最精确的测量方法，但不再害怕时序问题了
-    var navWidth = $('.wy-nav-side').width() + $('.wy-nav-content').outerWidth(true) + $('.wy-nav-side').offset().left;
-    // 防止计算值超出窗口宽度
-    if (navWidth > $(window).width()) {
-      navWidth = $(window).width();
-    }
-    $('.nav_fn').width(navWidth);
-
-    // 步骤2：调整字体大小
-    // Flexbox已经自动分配好了宽度，我们只需随便拿一个li来测量即可
-    var navItemWidth = $(".nav_fn>ul>li").not(".nav-side-toggle").first().width();
-
-    if (navItemWidth > 0) { // 确保宽度有效
-        var fontSize = navItemWidth * 0.15;
-        if (fontSize < 12) { fontSize = 12; }
-        $(".nav_fn>ul a").css("font-size", fontSize + "px");
-    }
-
-    // 步骤3: 修正高度（可选，因为CSS可能已经处理了）
-    var navHeight = $(".extrabody-content").height();
-    if (navHeight > 0) {
-      $(".nav_fn").height(navHeight);
+function setNavBar() {
+    let navBar = document.getElementById('navContent');
+    if (navBar) {
+        navBar.innerHTML = navBarHtml;
+        $('.dropDownContent').each(function() {
+            $(this).appendTo($(this).closest('li'));
+        });
     }
 }
 
+/**
+ * [新增] 监听汉堡菜单点击，并切换body上的锁定类
+ */
+function listenForMenuToggle() {
+    // 我们的自定义汉堡按钮和主题自带的按钮都可能触发菜单
+    // data-toggle="wy-nav-top" 是RTD主题菜单切换的通用选择器
+    $(document).on('click', '[data-toggle="wy-nav-top"]', function() {
+        // 当点击发生时，简单地切换body上的一个CSS类
+        // 这个类将用于在CSS中锁定或解锁滚动
+        $('body').toggleClass('mobile-menu-open');
+    });
+}
+
+/**
+ * 核心布局函数，负责所有动态计算和更新
+ */
+function updateNavBarLayout() {
+    const navBar = $('.nav_fn');
+    const mobileBreakpoint = 767;
+
+    if (!navBar.length) return; // 如果导航栏不存在则退出
+
+    // [核心修复] 判断当前是移动端还是桌面端
+    if ($(window).width() <= mobileBreakpoint) {
+        // --- 移动端逻辑 ---
+        // 强制导航栏全宽，忽略 .wy-nav-content 的滑动
+        navBar.css({
+            'left': '0px',
+            'width': '100%'
+        });
+    } else {
+        // --- 桌面端逻辑 (保持不变) ---
+        // 精确跟随 .wy-nav-content 的位置和尺寸
+        const targetElement = $('.wy-nav-content');
+        if (targetElement.length) {
+            const leftPosition = targetElement.offset().left;
+            const width = targetElement.outerWidth();
+            navBar.css({
+                'left': leftPosition + 'px',
+                'width': width + 'px'
+            });
+        }
+    }
+
+    // --- 字体自动缩放功能 (对移动和桌面都生效) ---
+    const navItemWidth = navBar.find(">ul>li").not(".nav-side-toggle").first().width();
+    if (navItemWidth > 0) {
+        let fontSize = navItemWidth * 0.15;
+        if (fontSize < 12) { fontSize = 12; }
+        navBar.find(">ul a").css("font-size", fontSize + "px");
+    }
+}
+
+// Navigation bar HTML
 let navBarHtml =
     `
   <div class="nav_fn">
@@ -52,12 +97,10 @@ let navBarHtml =
         <li>
             <div class="navDropDown">
                 <a href="https://docs.freenove.com/en/latest/"  target="_blank" class="dropBtn">Home</a>
-                <div class="dropDownContent">
-                </div>
             </div>
         </li>
         <li>
-            <div class="navDropDown">
+            <div class="navDropDown has-dropdown">
                 <a href="#" class="dropBtn">Store</a>
                 <div class="dropDownContent">
                     <a href="https://store.freenove.com/" target="_blank">Official </a>
@@ -70,44 +113,32 @@ let navBarHtml =
         <li>
             <div class="navDropDown">
                 <a href="https://docs.freenove.com/en/latest/about-freenove/tutorial.html#" target="_blank" class="dropBtn">Tutorial</a>
-                <div class="dropDownContent">
-                </div>
             </div>
         </li>
         <li>
             <div class="navDropDown">
                 <a href="https://docs.freenove.com/en/latest/about-freenove/support.html#" target="_blank" class="dropBtn">Support</a>
-                <div class="dropDownContent">
-                </div>
             </div>
         </li>
         <li>
             <div class="navDropDown">
                 <a href="https://docs.freenove.com/en/latest/about-freenove/app.html#" target="_blank" class="dropBtn">App</a>
-                <div class="dropDownContent">
-                </div>
             </div>
         </li>
         <li>
             <div class="navDropDown">
                 <a href="https://docs.freenove.com/en/latest/about-freenove/contact.html#" target="_blank" class="dropBtn">Contact</a>
-                <div class="dropDownContent">
-                </div>
             </div>
         </li>
         <li>
             <div class="navDropDown">
                 <a href="https://docs.freenove.com/en/latest/about-freenove/about.html#" target="_blank" class="dropBtn">About</a>
-                <div class="dropDownContent">
-                </div>
             </div>
         </li>
         
             <!-- <li id="txt">
                 <div class="navDropDown">
                     <a href="https://freenove.com/" class="dropBtn">Welcome</a>
-                    <div class="dropDownContent">
-                    </div>
                 </div>
             </li> -->
        
@@ -115,6 +146,7 @@ let navBarHtml =
 </div>
 `;
 
+// Footer HTML
 let footerHtml = `
 <div style="border-top: 1px solid #ccc; ">
     <br/>
@@ -127,34 +159,12 @@ let footerHtml = `
     <br/>
 </div>`;
 
+// Page header HTML
 let pageHeaderHtml=`
 Need help? Contact <a href="mailto:support@freenove.com">support@freenove.com</a>
 `;
 
-function setNavBar() {
-    let navBar = document.getElementById('navContent');
-    navBar.innerHTML = navBarHtml;
-}
-
-function setPageLogo() {
-    var link =      document.querySelector("link[rel*='icon']") ||      document.createElement("link");
-    link.type = "image/x-icon";
-    link.rel = "shortcut icon";
-    link.href = "https://cdn.jsdelivr.net/gh/Freenove/freenove-docs/docs/source/_static/images/freenove_logo_tag_icon.png";
-    // link.href = "https://raw.githubusercontent.com/Freenove/freenove-docs/refs/heads/main/docs/source/_static/images/freenove_logo_tag_icon.png";
-    document.getElementsByTagName("head")[0].appendChild(link);
-}
-function setHomeButtonPicture() {
-    let home_button = document.getElementsByClassName('logo');
-    // console.log(home_button);
-    home_button[0].src = "https://cdn.jsdelivr.net/gh/Freenove/freenove-docs/docs/source/_static/images/freenove_logo_home_button.png";
-    // home_button[0].src = "https://raw.githubusercontent.com/Freenove/freenove-docs/refs/heads/main/docs/source/_static/images/freenove_logo_home_button.png";
-}
 window.onload = function () {    
-    // console.log('window.onload');
-    // setPageLogo();
-    // setHomeButtonPicture();
-
     let footer_content = document.getElementById('footer_content');
     footer_content.innerHTML = footerHtml;
     $("#copy_right").text("© Copyright 2016 - " + new Date().getFullYear() + ", Freenove")
@@ -163,7 +173,6 @@ window.onload = function () {
     pageHeaderContent.innerHTML = pageHeaderHtml;
 };
 
-// console.log('freenove');
 
 /* ---------------------------------------------------------------------------------------------- */
 /* description: About The One-Click Copy Button

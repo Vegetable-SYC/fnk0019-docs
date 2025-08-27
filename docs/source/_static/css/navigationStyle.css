@@ -1,166 +1,205 @@
 @charset "utf-8";
 /* CSS Document */
-:root{
-    --fn_nav_height: 2.0rem;
-	--fn_nav_fontsize: 1.5rem;
+:root {
+    --fn_nav_height: 2.8rem;
 }
 
+/* 1. 为浮动的导航栏在页面顶部腾出空间 */
+body {
+    padding-top: var(--fn_nav_height);
+}
+/* 锁定移动端滚动 */
+body.mobile-menu-open {
+    overflow: hidden;
+}
+
+
+/* ------------------------------------------- */
+/* --- 导航栏 V6 终极版样式 (从这里开始) --- */
+/* ------------------------------------------- */
+
+/* 导航栏主体 */
 .nav_fn {
-	/* border: solid #F00 5px; */
-	/* background-color: rgb(52, 49, 49); */
-	/* background-color: solid #000; */
-	background-color:#343131;
-	position: absolute;
-	width: fit-content;
-	height: auto;
-	left: 0;
-	top: 0;
-	z-index: 1;
-	opacity: 1;
+    position: fixed;
+    top: 0;
+    height: var(--fn_nav_height);
+    z-index: 1000;
+    box-sizing: border-box;
+    background: linear-gradient(to bottom, #4a4a4a, #2c2c2c);
+    border-bottom: 1px solid #1a1a1a;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
 }
 
-/*
-==================================================
-==  最终解决方案 V3：使用 CSS Flexbox 彻底解决布局问题  ==
-==================================================
-*/
-
-/* 1. 将ul列表本身变成一个Flexbox容器 */
+/* 导航栏 ul 列表 */
 .nav_fn ul {
-	display: flex; /* 启用Flexbox布局 */
-	flex-wrap: nowrap; /* 保证永不换行 */
-	width: 100%;
-	height: 100%;
-	margin: 0;
-	padding: 0;
-	list-style-type: none;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
 }
 
-/* 2. 定义列表项li在Flexbox中的行为 */
+/* 父菜单项 li - 它是所有定位和动画的核心锚点 */
 .nav_fn li {
-	/* 移除旧的布局属性，如 float, display:block/inline-block */
-	display: flex; /* 让li本身也成为flex容器，便于内部元素垂直居中 */
-	justify-content: center; /* 水平居中 (链接文字) */
-	align-items: center;     /* 垂直居中 (链接文字) */
-
-	/* 这是魔法所在：让每个li平分剩余空间 */
-	flex-grow: 1;    /* 允许放大 */
-	flex-shrink: 1;  /* 允许缩小 */
-	flex-basis: 0;   /* 从0开始计算宽度，确保公平分配 */
-
-	height: var(--fn_nav_height);
-	cursor: pointer;
-	text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: 0;
+    height: 100%;
+    cursor: pointer;
+    position: relative; /* [核心] 为下拉菜单和下划线提供定位上下文 */
 }
 
-/* 3. 为自定义的切换按钮设置一个固定宽度，不参与空间分配 */
-.nav_fn ul .nav-side-toggle {
-    flex-grow: 0;       /* 不放大 */
-    flex-shrink: 0;     /* 不缩小 */
-    flex-basis: 45px;   /* 固定宽度为45px */
-    display: none;      /* 桌面端默认隐藏 */
-}
-
-/* 4. 链接a标签的样式，让它撑满整个li */
-.nav_fn a.dropBtn {
-	display: block;
-	width: 100%;
-	height: 100%;
-	line-height: var(--fn_nav_height); /* 确保文字垂直居中 */
-}
-
-/* 5. 媒体查询：仅在移动端显示切换按钮 */
-@media screen and (max-width: 767px) {
-    .nav_fn ul .nav-side-toggle {
-        display: flex; /* 在移动端显示出来，用flex以保持居中对齐 */
-    }
-}
-
-.navLogo {
-	background: url(../component-imgs/freenove-logo.png) no-repeat center;
-	background-size: 100%;
-	float: left;
-	width: auto;
-	height: var(--fn_nav_height);
-}
-
+/* 链接 a 标签所在的容器 */
 .nav_fn .navDropDown {
-	width: 100%;
-	height: 100%;
+    display: inline-flex;
+    align-items: center;
 	position: relative;
 }
 
-.nav_fn .dropBtn {
-	/* border: solid #00F 2px; */
-	display: inline-block;
-	color: white;
-	text-align: center;
-	width: 100%;
-	height: 100%;
-	text-decoration: none;
+/* 链接 a 标签的样式 */
+.nav_fn a.dropBtn {
+    display: block;
+    padding: 0 0.5em;
+    line-height: var(--fn_nav_height);
+    text-decoration: none;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    font-weight: 500;
+    color: #e8e8e8;
+    font-size: 1rem;
+    letter-spacing: 0.5px;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+    transition: color 0.3s ease;
 }
 
-.nav_fn a:hover,
-.navDropDown:hover .dropBtn {
-	background-color: #111;
+/* --- 箭头样式 (只对有内容的下拉菜单生效) --- */
+.navDropDown:has(.dropDownContent:not(:empty))::after {
+    content: '▼';
+    color: #e8e8e8;
+    font-size: 0.6em;
+    position: absolute;
+    left: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+    margin-left: 0.4em;
+    transition: transform 0.3s ease, color 0.3s ease;
 }
 
-.nav_fn .navDropDown {
-	width: 100%;
-	height: 100%;
-	display: inline-block;
+.has-dropdown::after {
+    content: '▼';
+    color: #e8e8e8;
+    font-size: 0.6em;
+    position: absolute; 
+    left: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+    margin-left: 0.4em;
+    transition: transform 0.3s ease, color 0.3s ease;
 }
 
+/* --- 悬停效果 (下划线动画 + 箭头旋转) --- */
+/* 将下划线伪元素附加到 li 上 */
+.nav_fn li::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 2px;
+    background-color: #fff;
+    transition: width 0.3s ease-in-out;
+}
+/* 鼠标悬停在 li 上时，触发效果 */
+.nav_fn li:not(.nav-side-toggle):hover a.dropBtn {
+    color: #fff; /* 文字变亮 */
+}
+.nav_fn li:not(.nav-side-toggle):hover::after {
+    width: 100%; /* [核心] 展开下划线至整个 li 的宽度 */
+}
+/* 悬停时旋转箭头 */
+.nav_fn .navDropDown:hover::after {
+    transform: translateY(-50%) rotate(180deg);
+}
+
+/* --- 下拉菜单样式 --- */
 .nav_fn .dropDownContent {
-	/* opacity: 1; */
-	width: 100%;
-	background-color: #F9F9F9;
-	position: absolute;
-	display: none;
-	box-shadow: 0px 8px 15px 5px rgba(0, 0, 0, 0.8);
+    background-color: #fdfdfd;
+    position: absolute; 
+    top: 100%;
+    left: 0;
+    
+    /* [核心修复] 允许子菜单根据内容自适应变宽，同时保证不比父级窄 */
+    min-width: 100%;
+    white-space: nowrap; /* 确保下拉菜单项的文字不换行 */
+    
+    z-index: 101;
+    display: none;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    border-radius: 0 0 8px 8px;
+    border-top: 2px solid #555;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    padding: 5px 0;
+    box-sizing: border-box;
 }
 
+/* 当悬停在整个 li 上时，显示其内部的下拉菜单 */
+.nav_fn li:hover .dropDownContent:not(:empty) {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+}
 .nav_fn .dropDownContent a {
-	color: black;
-	text-decoration: none;
-	display: block;
+    color: #333;
+    text-decoration: none;
+    display: block;
+    padding: 10px 2px;
+    font-size: 0.85rem !important;
+    font-weight: 400;
+    text-align: center;
+    text-shadow: none;
+    transition: background-color 0.2s ease, padding-left 0.2s ease;
 }
-
 .nav_fn .dropDownContent a:hover {
-	background-color: #F1F1F1;
+    background-color: #8d8d8d;
 }
 
-.nav_fn .navDropDown:hover .dropDownContent {
-	display: block;
+/* --- 细节与响应式 --- */
+.nav_fn > ul > li:not(:first-child):not(.nav-side-toggle) {
+    border-left: 1px solid rgba(255, 255, 255, 0.1);
+}
+.nav-side-btn {
+    height: 100%;
+    width: 100%;
+    color: #e8e8e8;
+    cursor: pointer;
+    font-size: 1.2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: color 0.3s ease;
+}
+.nav-side-btn:hover {
+    color: #fff;
+}
+.nav_fn ul .nav-side-toggle {
+    flex-grow: 0;
+    flex-shrink: 0;
+    flex-basis: 45px;
+    display: none;
 }
 
 nav.wy-nav-top {
     display: none !important;
 }
 
-.nav-side-btn {
-    height: 100%;
-    width: 100%;
-    color: white;
-    cursor: pointer;
-    font-size: 1.2rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.nav-side-btn:hover {
-    background-color: #111;
-}
-
-.nav_fn > ul > li:not(:first-child) {
-    border-left: 1px solid #555; /* 你可以调整颜色和粗细 */
-}
-
-/* 3. 媒体查询：只在移动端（屏幕宽度小于768px）显示这个按钮 */
 @media screen and (max-width: 767px) {
-    /* 同样使用高优先级的选择器来显示它 */
     .nav_fn ul .nav-side-toggle {
-        display: block;
+        display: flex;
     }
 }
