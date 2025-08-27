@@ -4,7 +4,11 @@
     --fn_nav_fontsize: 1.5rem;
 }
 
-.rst-versions {
+.version-switch {
+    display: none !important;
+}
+
+.floating container bottom-right {
     display: none !important;
 }
 

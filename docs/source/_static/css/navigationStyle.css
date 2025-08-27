@@ -5,18 +5,13 @@
 }
 
 /* 1. 为浮动的导航栏在页面顶部腾出空间 */
-body {
-    padding-top: var(--fn_nav_height);
+div.wy-nav-content {
+    padding-top: calc(var(--fn_nav_height) + 1.618em);
 }
 /* 锁定移动端滚动 */
 body.mobile-menu-open {
     overflow: hidden;
 }
-
-
-/* ------------------------------------------- */
-/* --- 导航栏 V6 终极版样式 (从这里开始) --- */
-/* ------------------------------------------- */
 
 /* 导航栏主体 */
 .nav_fn {
@@ -169,7 +164,6 @@ body.mobile-menu-open {
     background-color: #8d8d8d;
 }
 
-/* --- 细节与响应式 --- */
 .nav_fn > ul > li:not(:first-child):not(.nav-side-toggle) {
     border-left: 1px solid rgba(255, 255, 255, 0.1);
 }
@@ -207,7 +201,6 @@ nav.wy-nav-top {
         display: none !important;
     }
 
-	/* 将 a 标签恢复为块级，让文字正常居中 */
     .has-dropdown > a.dropBtn {
         display: block;
     }

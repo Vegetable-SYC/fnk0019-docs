@@ -12,7 +12,7 @@ $(window).on('load', function () {
     setNavBar();
     updateNavBarLayout();
     
-    // [新增] 监听汉堡菜单的点击事件，以控制页面滚动
+    // Control the page scroll bar
     listenForMenuToggle();
 });
 
