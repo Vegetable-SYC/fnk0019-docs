@@ -183,4 +183,7 @@ nav.wy-nav-top {
     .nav_fn ul .nav-side-toggle {
         display: flex;
     }
+	.wy-grid-for-nav {
+   		margin-top: var(--fn_nav_height);
+	}
 }
