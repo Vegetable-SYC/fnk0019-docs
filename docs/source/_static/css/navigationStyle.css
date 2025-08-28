@@ -2,18 +2,19 @@
 /* CSS Document */
 :root {
     --fn_nav_height: 2.8rem;
+    --fn_nav_fontsize: 1.5rem;
 }
 
-/* 隐藏页面顶部的区域 */
+/* "Hide the top area of the page */
 div.wy-nav-content {
     padding-top: calc(var(--fn_nav_height) + 1.618em);
 }
-/* 锁定移动端滚动 */
-body.mobile-menu-open {
-    overflow: hidden;
+
+.wy-nav-side {
+    padding-bottom: 0px;
 }
 
-/* 导航栏主体 */
+/* Main navigation bar styles */
 .nav_fn {
     position: fixed;
     top: 0;
@@ -25,7 +26,7 @@ body.mobile-menu-open {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
 }
 
-/* 导航栏 ul 列表 */
+/* Navigation bar UL list styles */
 .nav_fn ul {
     display: flex;
     width: 100%;
@@ -35,7 +36,7 @@ body.mobile-menu-open {
     list-style-type: none;
 }
 
-/* 父菜单项 li - 它是所有定位和动画的核心锚点 */
+/* Parent menu item LI styles */
 .nav_fn li {
     display: flex;
     justify-content: center;
@@ -45,17 +46,17 @@ body.mobile-menu-open {
     flex-basis: 0;
     height: 100%;
     cursor: pointer;
-    position: relative; /* [核心] 为下拉菜单和下划线提供定位上下文 */
+    position: relative;
 }
 
-/* 链接 a 标签所在的容器 */
+/* Container for link <a> tags */
 .nav_fn .navDropDown {
     display: inline-flex;
     align-items: center;
 	position: relative;
 }
 
-/* 链接 a 标签的样式 */
+/* Link <a> tag styles */
 .nav_fn a.dropBtn {
     display: block;
     padding: 0 0.5em;
@@ -82,8 +83,7 @@ body.mobile-menu-open {
     transition: transform 0.3s ease, color 0.3s ease;
 }
 
-/* --- 悬停效果 (下划线动画 + 箭头旋转) --- */
-/* 将下划线伪元素附加到 li 上 */
+/* Implement underline and arrow animation */
 .nav_fn li::after {
     content: '';
     position: absolute;
@@ -95,29 +95,28 @@ body.mobile-menu-open {
     background-color: #fff;
     transition: width 0.3s ease-in-out;
 }
-/* 鼠标悬停在 li 上时，触发效果 */
+/* Trigger effects on mouse hover */
 .nav_fn li:not(.nav-side-toggle):hover a.dropBtn {
-    color: #fff; /* 文字变亮 */
+    color: #fff; /* Text brightening effect */
 }
 .nav_fn li:not(.nav-side-toggle):hover::after {
-    width: 100%; /* [核心] 展开下划线至整个 li 的宽度 */
+    width: 100%; /* Expand the underline to the full width of the li element */
 }
-/* 悬停时旋转箭头 */
+/* Rotate arrow on hover */
 .nav_fn .navDropDown:hover::after {
     transform: translateY(-50%) rotate(180deg);
 }
 
-/* --- 下拉菜单样式 --- */
+/* --- Dropdown menu styles --- */
 .nav_fn .dropDownContent {
     background-color: #fdfdfd;
     position: absolute; 
     top: 100%;
     left: 0;
     
-    /* [核心修复] 允许子菜单根据内容自适应变宽，同时保证不比父级窄 */
     min-width: 100%;
 	max-width: 100%;
-    white-space: nowrap; /* 确保下拉菜单项的文字不换行 */
+    white-space: nowrap;
     
     z-index: 101;
     display: none;
@@ -131,7 +130,7 @@ body.mobile-menu-open {
     box-sizing: border-box;
 }
 
-/* 当悬停在整个 li 上时，显示其内部的下拉菜单 */
+/* Show dropdown menu on mouse hover */
 .nav_fn li:hover .dropDownContent:not(:empty) {
     display: block;
     opacity: 1;

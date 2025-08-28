@@ -11,9 +11,6 @@
 $(window).on('load', function () {
     setNavBar();
     updateNavBarLayout();
-    
-    // Control the page scroll bar
-    listenForMenuToggle();
 });
 
 $(window).resize(function () {
@@ -31,38 +28,26 @@ function setNavBar() {
 }
 
 /**
- * [新增] 监听汉堡菜单点击，并切换body上的锁定类
- */
-function listenForMenuToggle() {
-    // 我们的自定义汉堡按钮和主题自带的按钮都可能触发菜单
-    // data-toggle="wy-nav-top" 是RTD主题菜单切换的通用选择器
-    $(document).on('click', '[data-toggle="wy-nav-top"]', function() {
-        // 当点击发生时，简单地切换body上的一个CSS类
-        // 这个类将用于在CSS中锁定或解锁滚动
-        $('body').toggleClass('mobile-menu-open');
-    });
-}
-
-/**
- * 核心布局函数，负责所有动态计算和更新
+ * Dynamic calculation and updating of the navigation bar width
  */
 function updateNavBarLayout() {
     const navBar = $('.nav_fn');
     const mobileBreakpoint = 752;
 
-    if (!navBar.length) return; // 如果导航栏不存在则退出
+    if (!navBar.length) return;
 
-    // [核心修复] 判断当前是移动端还是桌面端
+    /* Determine whether the current device is mobile or desktop */
+    // mobile
     if ($(window).width() < mobileBreakpoint) {
-        // --- 移动端逻辑 ---
-        // 强制导航栏全宽，忽略 .wy-nav-content 的滑动
+        // Make the navigation bar occupy the full width
         navBar.css({
             'left': '0px',
             'width': '100%'
         });
-    } else {
-        // --- 桌面端逻辑 (保持不变) ---
-        // 精确跟随 .wy-nav-content 的位置和尺寸
+    } 
+    // desktop
+    else {
+        // Calculate the size of .wy-nav-content
         const targetElement = $('.wy-nav-content');
         if (targetElement.length) {
             const leftPosition = targetElement.offset().left;
@@ -74,7 +59,7 @@ function updateNavBarLayout() {
         }
     }
 
-    // --- 字体自动缩放功能 (对移动和桌面都生效) ---
+    // Enable automatic scaling feature
     const navItemWidth = navBar.find(">ul>li").not(".nav-side-toggle").first().width();
     if (navItemWidth > 0) {
         let fontSize = navItemWidth * 0.15;
@@ -183,7 +168,7 @@ window.onload = function () {
     let pageHeaderContent = document.getElementById('pageHeaderContent');
     pageHeaderContent.innerHTML = pageHeaderHtml;
 };
-
+/* ---------------------------------------------------------------------------------------------- */
 
 /* ---------------------------------------------------------------------------------------------- */
 /* description: About The One-Click Copy Button
@@ -274,7 +259,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     widgetContainer.style.position = 'fixed';
     widgetContainer.style.top = '170px';
-    widgetContainer.style.zIndex = '1000';
+    widgetContainer.style.zIndex = '1002';  // Set the stacking level.
 
     widgetContainer.innerHTML = `
         <div class="minimized-icon" style="cursor: pointer;"><i class="fas fa-exclamation"></i></div>

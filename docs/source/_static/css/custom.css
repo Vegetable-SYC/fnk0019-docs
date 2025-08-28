@@ -1,14 +1,5 @@
-
-:root{
-    --fn_nav_height: 2.0rem;
-    --fn_nav_fontsize: 1.5rem;
-}
-
+/* Hide version selector */
 .version-switch {
-    display: none !important;
-}
-
-.floating.container.bottom-right {
     display: none !important;
 }
 
@@ -20,6 +11,7 @@
  * date: 2025/04/28
  */
 
+ /* Admonition title centering style */
 .admonition-center.admonition p:not(.admonition-title) {
     text-align: left;
 }
@@ -455,6 +447,11 @@ dl.c.function dd:empty {
     pointer-events: auto;
     transform: scale(1);
     transition: all 0.3s ease;
+}
+
+#fnk-quick-jump.minimized .minimized-icon:hover {
+    transform: translateX(-10px) scale(1.15);        
+    cursor: pointer;                                 
 }
 
 /* Minimized control icon */
