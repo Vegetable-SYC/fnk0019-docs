@@ -12,17 +12,17 @@
     left: 0;
     width: 100%;
     height: 100vh; /* Use 100vh to cover the full viewport height. */
-
+    
     /* The semi-transparent black background. */
     background: rgba(0, 0, 0, .8);
 
     /* By default, the lightbox is invisible. The opacity will be transitioned to 1. */
     opacity: .01;
     transition: opacity .4s ease; /* A 0.4-second fade animation. */
-    z-index: 1000; /* Ensure it appears on top of all other page elements. */
 
     /* A performance hint for the browser that the opacity property will be animated. */
     will-change: opacity;
+    z-index: 1005;
 }
 
 /**

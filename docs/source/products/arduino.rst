@@ -78,16 +78,26 @@ Starter kits
 
 .. |FNK0017.MAIN| image:: ../_static/products/Arduino/FNK0017E.MAIN.jpg    
     :class: product-image
-.. |FNK0034.MAIN| image:: ../_static/products/Arduino/FNK0034E.MAIN.jpg    
-.. |FNK0059.MAIN| image:: ../_static/products/Arduino/FNK0059A.MAIN.jpg   
+.. |FNK0034.MAIN| image:: ../_static/products/Arduino/FNK0034E.MAIN.jpg   
+    :class: product-image 
+.. |FNK0059.MAIN| image:: ../_static/products/Arduino/FNK0059A.MAIN.jpg  
+    :class: product-image 
 .. |FNK0092A| image:: ../_static/products/Arduino/FNK0092A.png    
+    :class: product-image
 .. |FNK0093A| image:: ../_static/products/Arduino/FNK0093A.png    
-.. |FNK0094A| image:: ../_static/products/Arduino/FNK0094A.png    
+    :class: product-image
+.. |FNK0094A| image:: ../_static/products/Arduino/FNK0094A.png  
+    :class: product-image  
 .. |FNK0095A| image:: ../_static/products/Arduino/FNK0095A.png     
+    :class: product-image
 .. |FNK0092B| image:: ../_static/products/Arduino/FNK0092B.png    
+    :class: product-image
 .. |FNK0093B| image:: ../_static/products/Arduino/FNK0093B.png    
+    :class: product-image
 .. |FNK0094B| image:: ../_static/products/Arduino/FNK0094B.png    
+    :class: product-image
 .. |FNK0095B| image:: ../_static/products/Arduino/FNK0095B.png    
+    :class: product-image
 
 Robotics kits
 -------------------------------------------------------------------
