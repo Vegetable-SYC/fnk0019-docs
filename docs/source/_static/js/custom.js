@@ -432,3 +432,27 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 /* ---------------------------------------------------------------------------------------------- */
+
+// 等待整个网页内容加载完毕
+document.addEventListener('DOMContentLoaded', function() {
+
+  // 选取所有在 .product-table 中，且类为 .product-image 的图片
+  const images = document.querySelectorAll('.product-table img.product-image');
+
+  // 遍历所有找到的图片
+  images.forEach(function(image) {
+
+    // 为每张图片添加一个点击事件监听器
+    image.addEventListener('click', function(event) {
+      
+      // 获取被点击图片的源地址 (src)
+      const imageUrl = image.getAttribute('src');
+      
+      // 使用 basicLightbox 创建并显示一个包含该图片的弹窗
+      basicLightbox.create(`
+          <img src="${imageUrl}" style="max-width: 90vw; max-height: 90vh;">
+      `).show();
+
+    });
+  });
+});

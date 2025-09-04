@@ -6,9 +6,10 @@ Starter kits
 
 .. list-table:: 
    :header-rows: 1 
-   :width: 70%
+   :width: 85%
    :align: center
    :widths: 6 3 12
+   :class: product-table
    
    * -  Image
      -  SKU
@@ -26,11 +27,31 @@ Starter kits
      -  .. centered:: :Freenove:`fnk0075 <fnk0075>`
      -  **Freenove Basic Starter Kit for ESP8266**
 
-   * -  .. centered:: |FNK0076|
-     -  .. centered:: :Freenove:`fnk0076 <fnk0076>`
-     -  **Freenove ESP8266 Board**
-  
 .. |FNK0073| image:: ../_static/products/ESP8266/FNK0073.png  
 .. |FNK0074| image:: ../_static/products/ESP8266/FNK0074.png  
 .. |FNK0075| image:: ../_static/products/ESP8266/FNK0075.png  
-.. |FNK0076| image:: ../_static/products/ESP8266/FNK0076.png  
+
+Boards
+----------------------------------------------------------------
+
+.. list-table:: 
+   :header-rows: 1 
+   :width: 85%
+   :align: center
+   :widths: 6 3 12
+   :class: product-table
+   
+   * -  Image
+     -  SKU
+     -  Name
+
+   * -  .. centered:: |FNK0076A|
+     -  .. centered:: :Freenove:`FNK0076A <fnk0076>`
+     -  **Freenove ESP8266 Board**
+
+   * -  .. centered:: |FNK0076B|
+     -  .. centered:: :Freenove:`FNK0076B <fnk0076>`
+     -  **Freenove ESP8266 Board (2 Pack)**
+
+.. |FNK0076A| image:: ../_static/products/ESP8266/FNK0076A.png
+.. |FNK0076B| image:: ../_static/products/ESP8266/FNK0076B.png  

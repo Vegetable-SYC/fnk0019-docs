@@ -782,3 +782,68 @@ kbd {
     border: 1px solid #000000 !important;
     margin-bottom: 2rem !important; 
 }
+
+/* 自定义产品表格样式，仅针对 .product-table 类 */
+
+/* 表格整体样式 */
+table.docutils.product-table {
+    margin: 20px auto; /* 居中并增加外边距 */
+    border-collapse: separate; /* 使用 separate 可以实现圆角效果 */
+    border-spacing: 0;
+    border: 1px solid #dfe2e5; /* 外部边框 */
+    border-radius: 8px; /* 添加圆角 */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.08); /* 添加柔和阴影 */
+    overflow: hidden; /* 确保圆角能正常显示 */
+}
+
+/* 表头样式 */
+table.docutils.product-table thead th {
+    background-color: #ff7b00; /* 使用更鲜明的品牌色 */
+    color: #ffffff; /* 表头文字颜色改为白色 */
+    font-weight: 600; /* 字体加粗 */
+    padding: 18px 12px; /* 增加内边距 */
+    text-align: center;
+    border-bottom: 1px solid #dfe2e5;
+}
+
+table.docutils.product-table thead th p{
+    font-size: 1.3em !important;
+}
+
+/* 表格单元格样式 */
+table.docutils.product-table td {
+    padding: 15px 12px;
+    border-top: 1px solid #dfe2e5;
+    vertical-align: middle;
+    text-align: center;
+}
+
+/* 图片样式 */
+table.docutils.product-table td .centered img {
+    height: auto;
+    border-radius: 4px; /* 为图片也添加轻微圆角 */
+    transition: transform 0.2s ease-in-out; /* 添加悬停放大效果 */
+}
+
+table.docutils.product-table td .centered img:hover {
+    transform: scale(1.05);
+}
+
+/* 产品名称样式 */
+table.docutils.product-table td p strong {
+    font-size: 1.1em;
+    color: #333; /* 正常文本颜色 */
+    font-weight: 600;
+}
+
+/* SKU 文本样式 */
+table.docutils.product-table td .centered code {
+    background-color: #eef0f2;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-family: monospace;
+}
+
+table.docutils.product-table .product-image {
+    cursor: pointer;
+}
