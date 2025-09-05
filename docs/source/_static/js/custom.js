@@ -456,3 +456,13 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
 });
+
+$(document).ready(function() {
+  // 找到所有 class 為 purchase-icon 的圖片
+  // 獲取其父層的 <a> 連結標籤
+  // 並為其添加 target="_blank" 屬性
+  $('.purchase-icon').parent('a').attr({
+    'target': '_blank',
+    'rel': 'noopener noreferrer'
+  });
+});

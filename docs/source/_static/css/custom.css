@@ -847,3 +847,16 @@ table.docutils.product-table td .centered code {
 table.docutils.product-table .product-image {
     cursor: pointer;
 }
+
+/* 购买按钮样式 */
+.purchase-icon {
+    transition: transform 0.2s ease-in-out; /* 平滑的放大效果 */
+}
+
+.purchase-icon:hover {
+    transform: scale(1.2); /* 滑鼠接觸時放大 20% */
+}
+
+.product-table td a::after {
+    display: none !important;
+}

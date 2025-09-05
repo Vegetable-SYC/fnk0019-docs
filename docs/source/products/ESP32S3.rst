@@ -32,14 +32,19 @@ Starter kits
      -  **Freenove Development Kit for ESP32-S3**
 
    * -  .. centered:: |FNK0102A|
-     -  .. centered:: :Freenove:`fnk0102A <fnk0102>`
-     -  **Freenove Media Kit for ESP32-S3 (1.14 Inch Screen)**
+     -  .. centered:: :Freenove:`fnk0102 <fnk0102>`
+     -  **Freenove Media Kit for ESP32-S3**
 
 .. |FNK0082| image:: ../_static/products/ESP32S3/FNK0082.png   
+    :class: product-image
 .. |FNK0083| image:: ../_static/products/ESP32S3/FNK0083.png   
+    :class: product-image
 .. |FNK0084| image:: ../_static/products/ESP32S3/FNK0084.png     
+    :class: product-image
 .. |FNK0086| image:: ../_static/products/ESP32S3/FNK0086.png     
+    :class: product-image
 .. |FNK0102A| image:: ../_static/products/ESP32S3/FNK0102A.png     
+    :class: product-image
 
 Boards
 ----------------------------------------------------------------
@@ -55,23 +60,15 @@ Boards
      -  SKU
      -  Name
 
-   * -  .. centered:: |FNK0085|
-     -  .. centered:: :Freenove:`fnk0085 <fnk0085>`
-     -  **Freenove ESP32-S3-WROOM Board (N8R8)**
-
    * -  .. centered:: |FNK0085B|
-     -  .. centered:: :Freenove:`FNK0085B <fnk0085>`
-     -  **Freenove ESP32-S3-WROOM Board (N16R8)**
+     -  .. centered:: :Freenove:`FNK0085 <fnk0085>`
+     -  **Freenove ESP32-S3-WROOM Board**
 
    * -  .. centered:: |FNK0099A|
-     -  .. centered:: :Freenove:`FNK0099A <fnk0099>`
+     -  .. centered:: :Freenove:`FNK0099 <fnk0099>`
      -  **Freenove ESP32-S3-WROOM Board Lite**
-
-   * -  .. centered:: |FNK0099B|
-     -  .. centered:: :Freenove:`FNK0099B <fnk0099>`
-     -  **Freenove ESP32-S3-WROOM Board Lite (2 Pack)**
-
-.. |FNK0085| image:: ../_static/products/ESP32S3/FNK0085.png 
+ 
 .. |FNK0085B| image:: ../_static/products/ESP32S3/FNK0085B.png 
+    :class: product-image
 .. |FNK0099A| image:: ../_static/products/ESP32S3/FNK0099A.png 
-.. |FNK0099B| image:: ../_static/products/ESP32S3/FNK0099B.png 
+    :class: product-image

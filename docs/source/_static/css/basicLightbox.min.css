@@ -60,7 +60,7 @@
 .basicLightbox__placeholder > video:first-child:last-child {
     /* A classic technique to perfectly center an element inside its container. */
     display: block;
-    position: absolute;
+    /* position: absolute; */
     top: 0;
     right: 0;
     bottom: 0;
